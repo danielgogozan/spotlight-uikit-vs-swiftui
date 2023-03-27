@@ -1,0 +1,30 @@
+PODS:
+  - Kingfisher (7.6.2)
+  - SDWebImage (5.13.4):
+    - SDWebImage/Core (= 5.13.4)
+  - SDWebImage/Core (5.13.4)
+  - SwiftGen (6.5.1)
+  - SwiftLint (0.47.1)
+
+DEPENDENCIES:
+  - Kingfisher (~> 7.0)
+  - SDWebImage (~> 5.0)
+  - SwiftGen (~> 6.0)
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
+    - SDWebImage
+    - SwiftGen
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
+  SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
+  SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
+
+PODFILE CHECKSUM: e6abc715b9c4f1797edb4331fbfdd8b36fdc2ac1
+
+COCOAPODS: 1.10.2

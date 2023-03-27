@@ -1,0 +1,18 @@
+strings:
+  inputs: Spotlight-SwiftUI/
+  outputs:
+    - templateName: structured-swift5
+      output: Spotlight-SwiftUI/Resources/Strings.swift
+xcassets:
+  inputs:
+    - Spotlight-SwiftUI/Resources/Images.xcassets
+    - Spotlight-SwiftUI/Resources/Colors.xcassets
+  outputs:
+    - templateName: swift5
+      output: Spotlight-SwiftUI/Resources/Assets.swift
+fonts:
+  inputs:
+    - Spotlight-SwiftUI/Resources/fonts
+  outputs:
+    - templateName: swift5
+      output: Spotlight-SwiftUI/Resources/Fonts.swift
