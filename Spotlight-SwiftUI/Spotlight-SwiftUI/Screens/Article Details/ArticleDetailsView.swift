@@ -76,9 +76,6 @@ struct ArticleDetailsView: View {
         .onAppear {
             tabSettings.show = false
         }
-        .onDisappear {
-            tabSettings.show = true
-        }
         .edgesIgnoringSafeArea(.all)
         .toolbar(.hidden, for: .navigationBar)
     }

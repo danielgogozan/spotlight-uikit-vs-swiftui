@@ -17,9 +17,8 @@ struct LatestNewsView: View {
             .onAppear {
                 tabSettings.show = false
             }
-            .onDisappear {
-                tabSettings.show = true
-            }
+            .navigationTitle(L10n.hotUpdates)
+            .navigationBarTitleTextColor(Asset.Colors.primary.color.swiftUI)
     }
     
     var contentView: some View {
