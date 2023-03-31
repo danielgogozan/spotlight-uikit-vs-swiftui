@@ -50,7 +50,7 @@
 		E7BE3E3729A94329004B6EBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BE3E3629A94329004B6EBF /* ContentView.swift */; };
 		E7BE3E3C29A94329004B6EBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7BE3E3B29A94329004B6EBF /* Preview Assets.xcassets */; };
 		E7BE3E3E29A94329004B6EBF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BE3E3D29A94329004B6EBF /* Persistence.swift */; };
-		E7BE3E4129A94329004B6EBF /* Spotlight_SwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7BE3E3F29A94329004B6EBF /* Spotlight_SwiftUI.xcdatamodeld */; };
+		E7BE3E4129A94329004B6EBF /* Storage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7BE3E3F29A94329004B6EBF /* Storage.xcdatamodeld */; };
 		E7BE3E4929A94728004B6EBF /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = E7BE3E4829A94728004B6EBF /* swiftgen.yml */; };
 		E7BE3E5229A9479C004B6EBF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7BE3E4F29A9479C004B6EBF /* Localizable.strings */; };
 		E7BE3E5329A9479C004B6EBF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7BE3E5029A9479C004B6EBF /* Colors.xcassets */; };
@@ -379,7 +379,7 @@
 				E7BE3E8729A94B6F004B6EBF /* Model */,
 				E7BE3E7729A94AEB004B6EBF /* Networking */,
 				E76C245429C0582C00B02812 /* Keychain */,
-				E7BE3E3F29A94329004B6EBF /* Spotlight_SwiftUI.xcdatamodeld */,
+				E7BE3E3F29A94329004B6EBF /* Storage.xcdatamodeld */,
 				E7BE3E3A29A94329004B6EBF /* Preview Content */,
 				E7BE3E4A29A9476B004B6EBF /* Resources */,
 			);
@@ -652,7 +652,7 @@
 				E76C246029C074DA00B02812 /* FavoriteView.swift in Sources */,
 				E7A179E329D6336C00AE11D0 /* SearchResultsViewModel.swift in Sources */,
 				E7B62E9B29D219EB0050D804 /* ExpandableText.swift in Sources */,
-				E7BE3E4129A94329004B6EBF /* Spotlight_SwiftUI.xcdatamodeld in Sources */,
+				E7BE3E4129A94329004B6EBF /* Storage.xcdatamodeld in Sources */,
 				E7BE3E6F29A94876004B6EBF /* Assets.swift in Sources */,
 				E76C245129BF36C800B02812 /* Validation.swift in Sources */,
 				E76A618529BD03FE00330222 /* UIColor+Ext.swift in Sources */,
@@ -885,13 +885,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E7BE3E3F29A94329004B6EBF /* Spotlight_SwiftUI.xcdatamodeld */ = {
+		E7BE3E3F29A94329004B6EBF /* Storage.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				E7BE3E4029A94329004B6EBF /* Spotlight_SwiftUI.xcdatamodel */,
 			);
 			currentVersion = E7BE3E4029A94329004B6EBF /* Spotlight_SwiftUI.xcdatamodel */;
-			path = Spotlight_SwiftUI.xcdatamodeld;
+			path = Storage.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

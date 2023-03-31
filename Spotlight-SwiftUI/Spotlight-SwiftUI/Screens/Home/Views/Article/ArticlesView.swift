@@ -13,13 +13,13 @@ struct ArticlesView: View {
     @State var selection: Int?
     
     var headlines: [Article] = [Article(author: "Auth2", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth3", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth4", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth5", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth6", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth7", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth8", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth9", title: "Title1", description: "Desc1")]
+                                Article(author: "Auth3", title: "Title2", description: "Desc1"),
+                                Article(author: "Auth4", title: "Title3", description: "Desc1"),
+                                Article(author: "Auth5", title: "Title4", description: "Desc1"),
+                                Article(author: "Auth6", title: "Title5", description: "Desc1"),
+                                Article(author: "Auth7", title: "Title6", description: "Desc1"),
+                                Article(author: "Auth8", title: "Title7", description: "Desc1"),
+                                Article(author: "Auth9", title: "Title8", description: "Desc1")]
     var availableSize: CGSize
     
     // Note: - ScrollView > ScrollView > InfiniteScrolling with onAppear => X - will not work
@@ -27,12 +27,13 @@ struct ArticlesView: View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
                 header
-                HeadlinesView(viewModel: headlineViewModel,
-                              availableSize: availableSize)
+//                HeadlinesView(viewModel: headlineViewModel,
+//                              availableSize: availableSize)
                 
                 PillFilterView(selected: $viewModel.selectedTags,
-                               filterItems: NewsCategory.homeCases.map { $0.rawValue })
-                StatefulView(contentView: contentView, viewModel: viewModel)
+                               filterItems: NewsCategory.homeCases.map { $0.rawValue },
+                               multipleSelection: true)
+//                StatefulView(contentView: contentView, viewModel: viewModel)
             }
         }
     }

@@ -11,18 +11,24 @@ import SwiftUI
 struct PillFilterView: View {
     @Binding var selected: [String]
     let filterItems: [String]
+    let multipleSelection: Bool
     
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 10) {
                     ForEach(filterItems, id: \.self) { item in
-                        Button(item.capitalized) {
+                        Button {
                             if selected.contains(item),
                                 let index = selected.firstIndex(where: { $0 == item }) {
                                 selected.remove(at: index)
                             } else {
-                                selected.append(item)
+                                if multipleSelection {
+                                    selected.append(item)
+                                } else {
+                                    selected = [item]
+                                }
+                                
                                 withAnimation {
                                     guard let index = filterItems.firstIndex(where: { $0 == item }) else {
                                         return
@@ -30,11 +36,20 @@ struct PillFilterView: View {
                                     proxy.scrollTo(filterItems[index], anchor: .center)
                                 }
                             }
+                        } label: {
+                            HStack {
+                                if item.capitalized == "Filter" {
+                                    Image(uiImage: Asset.Images.filter.image)
+                                        .renderingMode(.template)
+                                        .foregroundColor(selected.contains(item) ? .white : Asset.Colors.black.color.swiftUI)
+                                }
+                                Text(item.capitalized)
+                            }
                         }
                         .padding([.top, .bottom], 7)
                         .padding([.leading, .trailing], 14)
-                        .foregroundColor(selected.contains(item) ? .white : Asset.Colors.black.color.swiftUI)
                         .font(FontFamily.Nunito.regular.font(size: 13).swiftUI)
+                        .foregroundColor(selected.contains(item) ? .white : Asset.Colors.black.color.swiftUI)
                         .background(gradientBackground(item: item))
                         .clipShape(Capsule())
                         .border(Asset.Colors.searchBorder.color.swiftUI, width: 1, cornerRadius: 50)
@@ -60,6 +75,6 @@ struct PillFilterView: View {
 
 struct PillFilterView_Previews: PreviewProvider {
     static var previews: some View {
-        PillFilterView(selected: .constant(["Pill 1"]), filterItems: ["Pill 1", "Pill 2"])
+        PillFilterView(selected: .constant(["Pill 1"]), filterItems: ["Pill 1", "Pill 2"], multipleSelection: true)
     }
 }

@@ -74,6 +74,7 @@ struct ArticleDetailsView: View {
             backButton
         }
         .onAppear {
+            guard tabSettings.show else { return }
             tabSettings.show = false
         }
         .edgesIgnoringSafeArea(.all)

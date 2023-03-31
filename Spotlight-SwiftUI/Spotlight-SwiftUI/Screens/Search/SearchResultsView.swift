@@ -14,13 +14,18 @@ struct SearchResultsView: View {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                VStack {
-                    PillFilterView(selected: .constant(["Filter"]), filterItems: NewsCategory.allCases.map { $0.rawValue.capitalized })
-                    StatefulView(contentView: contentView, viewModel: viewModel)
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack {
+                        PillFilterView(selected: $viewModel.selectedTags,
+                                       filterItems: viewModel.tags,
+                                       multipleSelection: false)
+                        StatefulView(contentView: contentView, viewModel: viewModel)
+                    }
                 }
                 .toolbar {
                     HStack {
-                        SearchBarView(image: Asset.Images.close.image)
+                        SearchBarView(searchKey: .constant(viewModel.filterData.query),
+                                      image: Asset.Images.close.image)
                             .frame(width: 300)
                             .onTapGesture {
                                 presentationMode.wrappedValue.dismiss()
@@ -34,14 +39,49 @@ struct SearchResultsView: View {
     }
     
     var contentView: some View {
-        VStack {
-            Text("Hello results")
+        LazyVStack(alignment: .leading) {
+            header
+                .padding(10)
+            ForEach(viewModel.state.payload ?? [], id: \.title) { article in
+                NavigationLink {
+                    ArticleDetailsView(article: article)
+                } label: {
+                    ArticleView(article: article)
+                        .onAppear {
+                            viewModel.getMore(article)
+                        }
+                }
+            }
+            .padding([.leading, .trailing], 10)
+            
+            if viewModel.showLoadingView {
+                ProgressView()
+                    .tint(Asset.Colors.redish.color.swiftUI)
+            }
         }
+    }
+    
+    var header: some View {
+        Text("About ")
+            .font(FontFamily.Nunito.regular.font(size: 14).swiftUI)
+            .foregroundColor(Asset.Colors.black.color.swiftUI)
+        +
+        Text(viewModel.totalResults.description)
+            .font(FontFamily.Nunito.regular.font(size: 14).swiftUI)
+            .foregroundColor(Asset.Colors.primary.color.swiftUI)
+        +
+        Text(" results for ")
+            .font(FontFamily.Nunito.regular.font(size: 14).swiftUI)
+            .foregroundColor(Asset.Colors.black.color.swiftUI)
+        +
+        Text(viewModel.filterData.query)
+            .font(FontFamily.Nunito.semiBoldItalic.font(size: 14).swiftUI)
+            .foregroundColor(Asset.Colors.black.color.swiftUI)
     }
 }
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultsView(viewModel: SearchResultsViewModel())
+        SearchResultsView(viewModel: SearchResultsViewModel(apiService: .preview, filterData: FilterData(query: "", selectedCategory: .filter)))
     }
 }

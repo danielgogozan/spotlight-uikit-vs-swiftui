@@ -37,7 +37,7 @@ struct HomeView: View {
                     .toolbar {
                         HStack {
                             Spacer()
-                            SearchBarView()
+                            SearchBarView(searchKey: .constant(""))
                                 .frame(width: 350)
                                 .onTapGesture {
                                     selection = 1

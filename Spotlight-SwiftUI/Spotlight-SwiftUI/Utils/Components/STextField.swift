@@ -18,6 +18,7 @@ struct STextField: View {
     var didEndEditing: ((String) -> Void)?
     var imageColor: UIColor? = nil
     var height: CGFloat = 20
+    var onImageTap: (() -> Void)?
     
     var body: some View {
         ZStack {
@@ -39,6 +40,9 @@ struct STextField: View {
                         .resizable()
                         .frame(width: height, height: height)
                         .foregroundColor(imageColor == nil ? Asset.Colors.redish.color.swiftUI : imageColor!.swiftUI)
+                        .onTapGesture {
+                            onImageTap?()
+                        }
                 }
                 .modifier(CapsuleTextfieldModifier())
                 

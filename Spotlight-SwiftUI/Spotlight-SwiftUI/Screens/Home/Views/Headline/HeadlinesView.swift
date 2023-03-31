@@ -19,9 +19,10 @@ struct HeadlinesView: View {
                                 Article(author: "Auth9", title: "Title1", description: "Desc1")]
     var availableSize: CGSize
     
+    // TODO: - REMOVE
     var body: some View {
         StatefulView(contentView: contentView, viewModel: viewModel)
-            .onAppear { viewModel.getTopHeadlines() }
+//            .onAppear { viewModel.getTopHeadlines() }
             .frame(width: availableSize.width,
                    height: availableSize.height * 0.3)
     }
