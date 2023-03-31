@@ -35,7 +35,7 @@ struct SearchHistoryView: View {
                                 selection = 1
                             }
                             .frame(width: 300)
-                            .padding([.leading], -(geometry.size.width - 320) / 2)
+                            .padding([.leading], -(geometry.size.width - 320) / 2.75)
                         }
                         .frame(width: geometry.size.width)
                     }

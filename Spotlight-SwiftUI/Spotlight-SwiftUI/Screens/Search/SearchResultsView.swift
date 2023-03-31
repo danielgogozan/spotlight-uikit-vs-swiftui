@@ -14,25 +14,29 @@ struct SearchResultsView: View {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                ScrollView(.vertical, showsIndicators: false) {
-                    LazyVStack {
-                        PillFilterView(selected: $viewModel.selectedTags,
-                                       filterItems: viewModel.tags,
-                                       multipleSelection: false)
-                        StatefulView(contentView: contentView, viewModel: viewModel)
-                    }
-                }
+                Color.clear
                 .toolbar {
                     HStack {
                         SearchBarView(searchKey: .constant(viewModel.filterData.query),
-                                      image: Asset.Images.close.image)
+                                      image: Asset.Images.close.image) {
+                            presentationMode.wrappedValue.dismiss()
+                        }
                             .frame(width: 300)
                             .onTapGesture {
                                 presentationMode.wrappedValue.dismiss()
                             }
-                            .padding([.leading], -(geometry.size.width - 320) / 2)
+                            .padding([.leading], -(geometry.size.width - 320) / 2.75)
                     }
                     .frame(width: geometry.size.width)
+                }
+            }
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack {
+                    PillFilterView(selected: $viewModel.selectedTags,
+                                   filterItems: viewModel.tags,
+                                   multipleSelection: false)
+                    StatefulView(contentView: contentView, viewModel: viewModel)
                 }
             }
         }
@@ -41,6 +45,7 @@ struct SearchResultsView: View {
     var contentView: some View {
         LazyVStack(alignment: .leading) {
             header
+                .padding([.top], 10)
                 .padding(10)
             ForEach(viewModel.state.payload ?? [], id: \.title) { article in
                 NavigationLink {

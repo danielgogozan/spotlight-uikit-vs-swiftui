@@ -14,7 +14,7 @@ struct SearchBarView: View {
     
     var body: some View {
         HStack {
-            STextField(
+            STextField(text: searchKey,
                        error: .constant(""),
                        image: image,
                        placeholder: "Search news",
