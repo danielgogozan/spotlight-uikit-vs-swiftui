@@ -26,21 +26,6 @@ struct SearchHistoryView: View {
                            tag: 1,
                            selection: $selection) { }
             
-            GeometryReader { geometry in
-                Color.clear
-                    .toolbar {
-                        HStack {
-                            SearchBarView(searchKey: $query, image: Asset.Images.rightArrow.image) {
-                                saveQuery()
-                                selection = 1
-                            }
-                            .frame(width: 300)
-                            .padding([.leading], -(geometry.size.width - 320) / 2.75)
-                        }
-                        .frame(width: geometry.size.width)
-                    }
-            }
-            
             List(history.compactMap { $0.key }.filter { !$0.isEmpty }, id: \.self) { key in
                 HStack {
                     Image(uiImage: Asset.Images.history.image)
@@ -66,6 +51,7 @@ struct SearchHistoryView: View {
             }
             .listStyle(.plain)
         }
+        .withSearchBar(searchBar)
         .onAppear {
             tabSettings.show = false
         }
@@ -74,6 +60,13 @@ struct SearchHistoryView: View {
     var contentView: some View {
         VStack {
             Text("Hello, history!")
+        }
+    }
+    
+    var searchBar: SearchBarView {
+        SearchBarView(searchKey: $query, autoFocus: true, image: Asset.Images.rightArrow.image) {
+            saveQuery()
+            selection = 1
         }
     }
     

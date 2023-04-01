@@ -10,35 +10,31 @@ import SwiftUI
 struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: SearchResultsViewModel
+    @State var showFilter: Bool = false
     
     var body: some View {
         ZStack {
-            GeometryReader { geometry in
-                Color.clear
-                .toolbar {
-                    HStack {
-                        SearchBarView(searchKey: .constant(viewModel.filterData.query),
-                                      image: Asset.Images.close.image) {
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                            .frame(width: 300)
-                            .onTapGesture {
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                            .padding([.leading], -(geometry.size.width - 320) / 2.75)
-                    }
-                    .frame(width: geometry.size.width)
-                }
-            }
-            
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack {
                     PillFilterView(selected: $viewModel.selectedTags,
                                    filterItems: viewModel.tags,
-                                   multipleSelection: false)
+                                   multipleSelection: false) {
+                        guard let selection = viewModel.selectedTags.first,
+                              selection == NewsCategory.filter.rawValue.capitalized else { return }
+                        showFilter = true
+                    }
+                                   .padding([.top], 20)
+                    
                     StatefulView(contentView: contentView, viewModel: viewModel)
                 }
             }
+        }
+        .withSearchBar(searchBar) {
+            presentationMode.wrappedValue.dismiss()
+        }
+        .sheet(isPresented: $showFilter) {
+            FilterView()
+                .presentationDetents([.fraction(0.47)])
         }
     }
     
@@ -82,6 +78,13 @@ struct SearchResultsView: View {
         Text(viewModel.filterData.query)
             .font(FontFamily.Nunito.semiBoldItalic.font(size: 14).swiftUI)
             .foregroundColor(Asset.Colors.black.color.swiftUI)
+    }
+    
+    var searchBar: SearchBarView {
+        SearchBarView(searchKey: .constant(viewModel.filterData.query),
+                      image: Asset.Images.close.image) {
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

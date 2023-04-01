@@ -9,20 +9,11 @@ import SwiftUI
 
 struct HeadlinesView: View {
     @ObservedObject var viewModel: HeadlineViewModel
-    var headlines: [Article] = [Article(author: "Auth2", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth3", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth4", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth5", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth6", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth7", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth8", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth9", title: "Title1", description: "Desc1")]
     var availableSize: CGSize
     
-    // TODO: - REMOVE
     var body: some View {
         StatefulView(contentView: contentView, viewModel: viewModel)
-//            .onAppear { viewModel.getTopHeadlines() }
+            .onAppear { viewModel.getTopHeadlines() }
             .frame(width: availableSize.width,
                    height: availableSize.height * 0.3)
     }

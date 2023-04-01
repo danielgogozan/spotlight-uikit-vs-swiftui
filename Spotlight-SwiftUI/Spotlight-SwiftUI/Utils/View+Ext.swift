@@ -26,4 +26,8 @@ extension View {
     func storeSize(in size: Binding<CGSize>) -> some View {
         modifier(SizeReader(size: size))
     }
+    
+    func withSearchBar(_ searchBar: SearchBarView, _ onTapGesture: (() -> Void)? = nil) -> some View {
+        modifier(SearchBarModifier(searchBar: searchBar, onTapGesture: onTapGesture))
+    }
 }

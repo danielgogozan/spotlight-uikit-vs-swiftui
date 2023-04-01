@@ -21,7 +21,8 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
     private(set) var filterData: FilterData
     
     @Published var totalResults: Int = 0
-    @Published var selectedTags: [String] = NewsCategory.allCases.filter { $0.rawValue == NewsCategory.filter.rawValue }.map { $0.rawValue }
+    @Published var selectedTags: [String] = NewsCategory.allCases.filter { $0.rawValue == NewsCategory.filter.rawValue }
+                                                        .map { $0.rawValue.capitalized }
     @Published var showLoadingView: Bool = false
     private var currentPage = 1
     private var cancellables = [AnyCancellable]()
@@ -47,9 +48,7 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
         handleFilterChanges()
     }
     
-    // TODO: - REMOVE
     func getMore(_ presumedLastArticle: Article) {
-        return
         guard let articles = state.payload else { return }
         let thresholdIndex = articles.index(articles.endIndex, offsetBy: -1)
         let currentIndex = articles.firstIndex(where: { $0.title == presumedLastArticle.title })
@@ -66,9 +65,7 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
         getArticles(force: true)
     }
     
-    // TODO: - REMOVE
     func handleFilterChanges() {
-        return
         $selectedTags
             .sink { [weak self] newTags in
                 guard let self else { return }

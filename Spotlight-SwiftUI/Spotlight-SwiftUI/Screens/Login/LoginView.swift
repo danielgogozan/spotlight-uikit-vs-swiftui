@@ -29,13 +29,15 @@ struct LoginView: View {
                 header
                 STextField(error: $viewModel.emailError,
                            image: Asset.Images.email.image,
-                           placeholder: L10n.loginEmail) { newEmail in
+                           placeholder: L10n.loginEmail,
+                           imageHeight: 20) { newEmail in
                     viewModel.email = newEmail
                 }
                 STextField(error: $viewModel.passwordError,
                            image: Asset.Images.lock.image,
                            placeholder: L10n.loginPassword,
-                           isSecured: true) { newPassword in
+                           isSecured: true,
+                           imageHeight: 20) { newPassword in
                     viewModel.password = newPassword
                 }
                 HStack {
@@ -60,7 +62,7 @@ struct LoginView: View {
                     .disabled(!viewModel.isLoginActive)
                     .padding(7)
                     .frame(maxWidth: .infinity)
-                    .background(!viewModel.isLoginActive ? Asset.Colors.lightGray.color.swiftUI : Asset.Colors.redish.color.swiftUI)
+                    .background(!viewModel.isLoginActive ? Gradients.inactiveGradient : Gradients.activeGradient)
                     .foregroundColor(.white)
                     .clipShape(Capsule())
                     .font(FontFamily.Nunito.regular.font(size: 14).swiftUI)

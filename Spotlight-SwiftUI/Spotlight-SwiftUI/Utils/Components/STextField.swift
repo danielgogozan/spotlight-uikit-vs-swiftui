@@ -15,9 +15,10 @@ struct STextField: View {
     var image: UIImage = UIImage()
     var placeholder: String = ""
     var isSecured: Bool = false
-    var didEndEditing: ((String) -> Void)?
-    var imageColor: UIColor? = nil
+    var imageColor: UIColor?
     var height: CGFloat = 20
+    var imageHeight: CGFloat = 15
+    var didEndEditing: ((String) -> Void)?
     var onImageTap: (() -> Void)?
     
     var body: some View {
@@ -36,14 +37,22 @@ struct STextField: View {
                         }
                         .frame(height: height)
                     }
-                    Image(uiImage: image)
-                        .resizable()
-                        .frame(width: height, height: height)
-                        .foregroundColor(imageColor == nil ? Asset.Colors.redish.color.swiftUI : imageColor!.swiftUI)
-                        .onTapGesture {
-                            onImageTap?()
-                        }
                 }
+                .overlay(content: {
+                    GeometryReader { geometry in
+                        VStack(alignment: .trailing) {
+                            Spacer()
+                            Image(uiImage: image)
+                                .resizable()
+                                .offset(x: geometry.size.width - imageHeight, y: -geometry.size.height/2 - imageYOffset)
+                                .frame(width: imageHeight, height: imageHeight)
+                                .foregroundColor(imageColor == nil ? Asset.Colors.redish.color.swiftUI : imageColor!.swiftUI)
+                                .onTapGesture {
+                                    onImageTap?()
+                                }
+                        }
+                    }
+                })
                 .modifier(CapsuleTextfieldModifier())
                 
                 if !error.isEmpty && isActive {
@@ -54,6 +63,11 @@ struct STextField: View {
                 }
             }
         }
+    }
+    
+    // Login assets have a wrong dimension so I have to fix it here
+    var imageYOffset: CGFloat {
+        imageHeight == height ? 0 : imageHeight / 2
     }
 }
 

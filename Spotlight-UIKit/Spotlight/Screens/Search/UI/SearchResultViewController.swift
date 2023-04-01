@@ -12,7 +12,6 @@ protocol SearchParentDelegate: AnyObject {
 }
 
 class SearchResultViewController: UIViewController {
-
     @IBOutlet private weak var articlesTableView: UITableView!
     private let searchBar = SearchBarView(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
     

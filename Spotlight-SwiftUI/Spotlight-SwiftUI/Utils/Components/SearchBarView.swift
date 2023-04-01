@@ -9,8 +9,11 @@ import SwiftUI
 
 struct SearchBarView: View {
     @Binding var searchKey: String
+    var autoFocus: Bool = false
     var image = Asset.Images.iconSearch.image
     var onSearchTapped: (() -> Void)?
+    
+    @FocusState private var forceFocus: Bool
     
     var body: some View {
         HStack {
@@ -18,13 +21,17 @@ struct SearchBarView: View {
                        error: .constant(""),
                        image: image,
                        placeholder: "Search news",
-                       didEndEditing: { text in
-                           searchKey = text
-                       },
                        imageColor: Asset.Colors.black.color,
-                       height: 10) {
-                           onSearchTapped?()
-                       }
+                       height: 10) { text in
+                searchKey = text
+            } onImageTap: {
+                onSearchTapped?()
+            }
+            .focused($forceFocus)
+        }
+        .onAppear {
+            guard autoFocus else { return }
+            forceFocus = true
         }
     }
 }

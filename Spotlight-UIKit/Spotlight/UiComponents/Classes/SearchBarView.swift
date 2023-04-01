@@ -29,7 +29,7 @@ class SearchBarView: UIView {
     
     var image: UIImage? {
         didSet {
-            imageView.image = image
+            imageView.image = image?.withColor(Asset.Colors.black.color)
         }
     }
     

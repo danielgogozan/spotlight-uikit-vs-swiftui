@@ -12,6 +12,7 @@ struct PillFilterView: View {
     @Binding var selected: [String]
     let filterItems: [String]
     let multipleSelection: Bool
+    var openExtraViewIfNeeded: (() -> Void)?
     
     var body: some View {
         ScrollViewReader { proxy in
@@ -19,7 +20,8 @@ struct PillFilterView: View {
                 HStack(alignment: .top, spacing: 10) {
                     ForEach(filterItems, id: \.self) { item in
                         Button {
-                            if selected.contains(item),
+                            if  multipleSelection,
+                                selected.contains(item),
                                 let index = selected.firstIndex(where: { $0 == item }) {
                                 selected.remove(at: index)
                             } else {
@@ -27,6 +29,7 @@ struct PillFilterView: View {
                                     selected.append(item)
                                 } else {
                                     selected = [item]
+                                    openExtraViewIfNeeded?()
                                 }
                                 
                                 withAnimation {

@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if didRunBefore {
-                FloatinTabBar()
+                FloatingTabBar()
             } else {
                 LoginView(viewModel: LoginViewModel(apiService: AuthService(apiService: APIService()),
                                                     keychainManager: KeychainManager(keychain: Keychain())))

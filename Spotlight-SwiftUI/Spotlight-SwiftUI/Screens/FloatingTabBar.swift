@@ -34,7 +34,7 @@ class TabSettings: ObservableObject {
     @Published var show = true
 }
 
-struct FloatinTabBar: View {
+struct FloatingTabBar: View {
     @State private var selectedTab = TabItem.home
     let apiService = NewsService(apiService: .preview)
     @StateObject var tabSettings = TabSettings()
@@ -81,7 +81,7 @@ struct FloatinTabBar: View {
                         }
                     }
                     .padding(.horizontal, 30)
-                    .padding(.vertical, 10)
+                    .padding(.vertical, 7)
                     .background(Color.white) // important to spend across all space
                     .cornerRadius(200)
                     .padding(.bottom, (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0) - 30)
@@ -105,6 +105,6 @@ struct FloatinTabBar: View {
 
 struct FloatinTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        FloatinTabBar()
+        FloatingTabBar()
     }
 }

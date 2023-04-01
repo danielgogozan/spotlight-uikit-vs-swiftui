@@ -9,14 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     let apiService: NewsServiceProtocol
-    var headlines: [Article] = [Article(author: "Auth2", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth3", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth4", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth5", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth6", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth7", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth8", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth9", title: "Title1", description: "Desc1")]
     @State var selection: Int?
     @EnvironmentObject var tabSettings: TabSettings
     
@@ -35,15 +27,7 @@ struct HomeView: View {
                     }
                     .padding([.top], 0.1) // IMPORTANT: - Force to respect top safe area
                     .toolbar {
-                        HStack {
-                            Spacer()
-                            SearchBarView(searchKey: .constant(""))
-                                .frame(width: 350)
-                                .onTapGesture {
-                                    selection = 1
-                                }
-                            Spacer()
-                        }
+                        searchToolbar
                         .frame(width: geometry.size.width)
                     }
                 }
@@ -54,6 +38,24 @@ struct HomeView: View {
             }
         }
         .accentColor(Asset.Colors.black.color.swiftUI) // mandatory on NavigationView
+    }
+    
+    var searchToolbar: some View {
+        HStack {
+            Spacer()
+            SearchBarView(searchKey: .constant(""))
+                .frame(width: 330)
+                .onTapGesture {
+                    selection = 1
+                }
+            Spacer()
+            Button { } label: {
+                Image(uiImage: Asset.Images.iconNotification.image)
+                    .renderingMode(.template)
+                    .foregroundColor(Asset.Colors.primary.color.swiftUI)
+            }
+            Spacer()
+        }
     }
 }
     
