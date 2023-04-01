@@ -70,56 +70,27 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEx-R5-z0I" userLabel="Scroll To Top View">
-                                <rect key="frame" x="187" y="68" width="40" height="40"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-search" translatesAutoresizingMaskIntoConstraints="NO" id="O1r-kq-eLk">
-                                        <rect key="frame" x="5" y="5" width="30" height="30"/>
-                                        <gestureRecognizers/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="O1r-kq-eLk" secondAttribute="bottom" constant="5" id="HC1-TY-PcW"/>
-                                    <constraint firstItem="O1r-kq-eLk" firstAttribute="top" secondItem="yEx-R5-z0I" secondAttribute="top" constant="5" id="I0P-vv-CSA"/>
-                                    <constraint firstAttribute="width" constant="40" id="Plm-4z-ecw"/>
-                                    <constraint firstAttribute="height" constant="40" placeholder="YES" id="guA-EJ-gkL"/>
-                                    <constraint firstAttribute="trailing" secondItem="O1r-kq-eLk" secondAttribute="trailing" constant="5" id="uEC-KB-KD2"/>
-                                    <constraint firstItem="O1r-kq-eLk" firstAttribute="leading" secondItem="yEx-R5-z0I" secondAttribute="leading" constant="5" id="utY-Zq-f10"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="pIS-gf-wnY" appends="YES" id="uuE-Ep-l39"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XKs-mb-6iR"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yEx-R5-z0I" firstAttribute="top" secondItem="XKs-mb-6iR" secondAttribute="top" constant="20" id="Bsf-Kj-0E0"/>
                             <constraint firstAttribute="bottom" secondItem="sZs-Ve-VNF" secondAttribute="bottom" id="C1T-BR-Kzz"/>
                             <constraint firstItem="sZs-Ve-VNF" firstAttribute="leading" secondItem="XKs-mb-6iR" secondAttribute="leading" id="HGa-xW-Meu"/>
-                            <constraint firstItem="yEx-R5-z0I" firstAttribute="centerX" secondItem="iJJ-mt-fCM" secondAttribute="centerX" id="j6a-MM-x3N"/>
                             <constraint firstItem="XKs-mb-6iR" firstAttribute="trailing" secondItem="sZs-Ve-VNF" secondAttribute="trailing" id="qzh-ne-cDk"/>
                             <constraint firstItem="sZs-Ve-VNF" firstAttribute="top" secondItem="XKs-mb-6iR" secondAttribute="top" id="wiO-9N-X3E"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="favCollectionView" destination="sZs-Ve-VNF" id="agz-gI-NnW"/>
-                        <outlet property="scrollToTopImageView" destination="O1r-kq-eLk" id="C4F-T4-bzI"/>
-                        <outlet property="scrollToTopView" destination="yEx-R5-z0I" id="YeO-9X-nr6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qv5-sk-lVJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="pIS-gf-wnY">
-                    <connections>
-                        <action selector="scrollToTopTapped:" destination="MvG-w3-izF" id="IMB-G1-PzT"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="pIS-gf-wnY"/>
             </objects>
             <point key="canvasLocation" x="1286.9565217391305" y="221.65178571428569"/>
         </scene>
     </scenes>
     <resources>
-        <image name="icon-search" width="14" height="13.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

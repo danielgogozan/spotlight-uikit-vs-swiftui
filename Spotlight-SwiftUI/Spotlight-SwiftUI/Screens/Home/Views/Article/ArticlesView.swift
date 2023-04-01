@@ -19,8 +19,8 @@ struct ArticlesView: View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
                 header
-//                HeadlinesView(viewModel: headlineViewModel,
-//                              availableSize: availableSize)
+                HeadlinesView(viewModel: headlineViewModel,
+                              availableSize: availableSize)
                 
                 PillFilterView(selected: $viewModel.selectedTags,
                                filterItems: NewsCategory.homeCases.map { $0.rawValue },

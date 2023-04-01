@@ -9,29 +9,28 @@ import SwiftUI
 
 struct HeadlinesView: View {
     @ObservedObject var viewModel: HeadlineViewModel
+    @State var selection: Int?
+    @State private var selectedHeadline: Article = .init()
     var availableSize: CGSize
     
     var body: some View {
-        StatefulView(contentView: contentView, viewModel: viewModel)
-            .onAppear { viewModel.getTopHeadlines() }
-            .frame(width: availableSize.width,
-                   height: availableSize.height * 0.3)
+        VStack {
+            StatefulView(contentView: contentView, viewModel: viewModel)
+                .onAppear { viewModel.getTopHeadlines() }
+                .frame(width: availableSize.width, height: availableSize.height * 0.35)
+        }
     }
     
     var contentView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 10) {
-                ForEach(viewModel.state.payload ?? [], id: \.title) { headline in
-                    NavigationLink {
-                        ArticleDetailsView(article: headline)
-                    } label: {
-                        HeadlineView(headline: headline)
-                            .frame(width: availableSize.width * 0.9,
-                                   height: availableSize.height * 0.3)
-                    }
-                }
+        ZStack {
+            NavigationLink(destination: ArticleDetailsView(article: selectedHeadline),
+                           tag: 1,
+                           selection: $selection) { }
+            
+            CarouselView(UIState: .init(activeCardId: ""), articles: viewModel.state.payload ?? [], availableSize: availableSize) { article in
+                selectedHeadline = article
+                selection = 1
             }
-            .padding([.leading, .trailing], 10)
         }
     }
 }

@@ -11,8 +11,6 @@ class FavoriteViewController: BaseViewController {
     
     // MARK: - Private properties
     @IBOutlet private weak var favCollectionView: UICollectionView!
-    @IBOutlet private weak var scrollToTopView: UIView!
-    @IBOutlet private weak var scrollToTopImageView: UIImageView!
     
     private var lastYContentOffset: CGFloat = 0
     private var focusSearchView: Bool = false
@@ -27,7 +25,6 @@ class FavoriteViewController: BaseViewController {
         view.addGestureRecognizer(tap)
         
         setupNavBar()
-        setupScrollView()
         setupCollectionView()
         bindViewModel()
     }
@@ -53,14 +50,6 @@ private extension FavoriteViewController {
         navigationItem.title = L10n.favoritesScreenTitle
     }
     
-    func setupScrollView() {
-        scrollToTopView.addBlurEffect(blurEffectStyle: .extraLight)
-        scrollToTopView.layer.cornerRadius = 5
-        scrollToTopView.clipsToBounds = true
-        scrollToTopImageView.image = Asset.Images.iconSearch.image.withColor(Asset.Colors.primary.color)
-        scrollToTopView.alpha = 0
-    }
-    
     func setupCollectionView() {
         favCollectionView.registerCell(ofType: FavoriteCollectionViewCell.self)
         favCollectionView.registerCell(ofType: SearchBarCollectionCell.self)
@@ -74,10 +63,6 @@ private extension FavoriteViewController {
             guard let self = self else { return }
             self.favCollectionView.reloadData()
         }
-    }
-    
-    @IBAction func scrollToTopTapped(_ sender: UITapGestureRecognizer) {
-        self.favCollectionView.setContentOffset(.zero, animated: true)
     }
 }
 
@@ -103,7 +88,6 @@ extension FavoriteViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? SearchBarCollectionCell else { return }
-        hideScrollToTopView()
         if focusSearchView {
             cell.focus = true
         }
@@ -165,40 +149,4 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewDele
         }
     }
     
-}
-
-// MARK: - Scroll View Delegate
-extension FavoriteViewController: UIScrollViewDelegate {
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        lastYContentOffset = scrollView.contentOffset.y
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard !favCollectionView.indexPathsForVisibleItems.isEmpty && !favCollectionView.indexPathsForVisibleItems.contains(where: { $0.section == 0})
-        else {
-            hideScrollToTopView()
-            return
-        }
-        
-        if lastYContentOffset < scrollView.contentOffset.y {
-            hideScrollToTopView()
-        } else if lastYContentOffset > scrollView.contentOffset.y {
-            showScrollToTopView()
-        }
-    }
-    
-    func hideScrollToTopView() {
-        guard scrollToTopView.alpha == 1 else { return }
-        UIView.animate(withDuration: 0.3, delay: 0) {
-            self.scrollToTopView.alpha = 0
-        }
-    }
-    
-    func showScrollToTopView() {
-        guard scrollToTopView.alpha == 0 else { return }
-        UIView.animate(withDuration: 0.3, delay: 0) {
-            self.scrollToTopView.alpha = 1
-        }
-    }
 }
