@@ -32,7 +32,7 @@
 		E76C247229C0C29500B02812 /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76C247129C0C29500B02812 /* ArticlesView.swift */; };
 		E77301C029D8402C00E18A22 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77301BF29D8402C00E18A22 /* FilterView.swift */; };
 		E77301C229D869B200E18A22 /* SearchBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77301C129D869B200E18A22 /* SearchBarModifier.swift */; };
-		E77301C529D880A100E18A22 /* GradientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77301C429D880A100E18A22 /* GradientStyle.swift */; };
+		E77301C529D880A100E18A22 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77301C429D880A100E18A22 /* Gradients.swift */; };
 		E783091D29C78107001AAD7C /* HeadlineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E783091C29C78107001AAD7C /* HeadlineViewModel.swift */; };
 		E783091F29C78876001AAD7C /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E783091E29C78876001AAD7C /* ArticleViewModel.swift */; };
 		E789D69229D0C4030095A08A /* ArticleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E789D69129D0C4030095A08A /* ArticleDetailsView.swift */; };
@@ -114,7 +114,7 @@
 		E77301BF29D8402C00E18A22 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		E77301C129D869B200E18A22 /* SearchBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarModifier.swift; sourceTree = "<group>"; };
 		E77301C329D87B9A00E18A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		E77301C429D880A100E18A22 /* GradientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyle.swift; sourceTree = "<group>"; };
+		E77301C429D880A100E18A22 /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		E783091C29C78107001AAD7C /* HeadlineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineViewModel.swift; sourceTree = "<group>"; };
 		E783091E29C78876001AAD7C /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		E789D69129D0C4030095A08A /* ArticleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsView.swift; sourceTree = "<group>"; };
@@ -233,13 +233,10 @@
 				E76A618429BD03FE00330222 /* UIColor+Ext.swift */,
 				E76A618829BD076000330222 /* AttributedLabel.swift */,
 				E76A618F29BD2F1500330222 /* View+Ext.swift */,
-				E76A619129BD2F2400330222 /* CheckboxToggle.swift */,
 				E76C245029BF36C800B02812 /* Validation.swift */,
 				E76C245229BF436300B02812 /* Preview.swift */,
 				E723D8B029D055F000C20D6A /* String+.swift */,
-				E7A179DE29D6289D00AE11D0 /* SizeReaderModifier.swift */,
-				E77301C129D869B200E18A22 /* SearchBarModifier.swift */,
-				E77301C429D880A100E18A22 /* GradientStyle.swift */,
+				E77301C429D880A100E18A22 /* Gradients.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -321,6 +318,9 @@
 		E789D69329D0D52E0095A08A /* View Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				E76A619129BD2F2400330222 /* CheckboxToggle.swift */,
+				E7A179DE29D6289D00AE11D0 /* SizeReaderModifier.swift */,
+				E77301C129D869B200E18A22 /* SearchBarModifier.swift */,
 				E789D69429D0D53A0095A08A /* SizeReader.swift */,
 			);
 			path = "View Modifiers";
@@ -641,7 +641,7 @@
 				E76A618729BD042000330222 /* DateUtils.swift in Sources */,
 				E7BE3E3E29A94329004B6EBF /* Persistence.swift in Sources */,
 				E7A179DF29D6289D00AE11D0 /* SizeReaderModifier.swift in Sources */,
-				E77301C529D880A100E18A22 /* GradientStyle.swift in Sources */,
+				E77301C529D880A100E18A22 /* Gradients.swift in Sources */,
 				E7BE3E8629A94B10004B6EBF /* Request.swift in Sources */,
 				E76C245729C0583800B02812 /* Keychain.swift in Sources */,
 				E7BE3E9129A94B77004B6EBF /* Article.swift in Sources */,
