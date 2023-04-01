@@ -12,7 +12,7 @@ struct HeadlineView: View {
     var headline: Article
     
     var imageUrl: URL? {
-        URL(string: headline.imageUrl ?? "https://www.manager.ro/dbimg/articole/breakingnews_107768.jpg")
+        URL(string: headline.imageUrl ?? "https://static.vecteezy.com/system/resources/thumbnails/002/530/160/original/news-live-background-4k-free-video.jpg")
     }
     
     var body: some View {

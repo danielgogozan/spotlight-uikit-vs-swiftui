@@ -25,7 +25,7 @@ struct ArticlesView: View {
                 PillFilterView(selected: $viewModel.selectedTags,
                                filterItems: NewsCategory.homeCases.map { $0.rawValue },
                                multipleSelection: true)
-                //                StatefulView(contentView: contentView, viewModel: viewModel)
+                StatefulView(contentView: contentView, viewModel: viewModel)
             }
         }
     }

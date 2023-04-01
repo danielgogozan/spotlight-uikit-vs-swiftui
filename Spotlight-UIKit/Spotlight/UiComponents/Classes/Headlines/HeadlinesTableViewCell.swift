@@ -20,6 +20,7 @@ class HeadlinesTableViewCell: UITableViewCell {
     private var indexOfCellBeforeDragging = 0
     private var indexOfCurrentCell = 0
     private var articleViewModels: [ArticleViewModel] = []
+    private var firstTimeLoaded = true
     
     var customizerDelegate: CellCostumizationDelegate?
     var navigationDelegate: HeadlinesNavigationDelegate?
@@ -93,10 +94,9 @@ extension HeadlinesTableViewCell: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueCell(ofType: HeadlinesCell.self, at: indexPath)
-            cell.setup(articleViewModel: articleViewModels[indexPath.item])
-//            if indexPath.row == indexOfCurrentCell {
-//                cell.toCustom()
-//            }
+            let shouldEmphasize = indexPath.row == 0 && firstTimeLoaded
+            cell.setup(articleViewModel: articleViewModels[indexPath.item], emphasized: shouldEmphasize)
+            if shouldEmphasize { firstTimeLoaded = false }
             return cell
         default:
             return UICollectionViewCell()

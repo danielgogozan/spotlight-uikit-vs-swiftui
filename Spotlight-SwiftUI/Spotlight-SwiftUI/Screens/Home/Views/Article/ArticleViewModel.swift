@@ -39,11 +39,8 @@ class ArticleViewModel: StatefulViewModel<[Article], Error> {
         getArticles(force: true)
     }
     
-    // TODO: - REMOVE
     func handleFilterChanges() {
-        return
-        print("X") // REMOVE THIS AND SUBSCRIPTION WILL GET CALLED.
-        // TODO: - LOL - subscription called after return.
+        // MARK: - subscription called after return?
         $selectedTags
             .sink { [weak self] newTags in
                 guard let self else { return }
@@ -55,7 +52,6 @@ class ArticleViewModel: StatefulViewModel<[Article], Error> {
     }
     
     func getArticles(force forceFetching: Bool = false) {
-        return
         if state.payload?.isEmpty ?? true {
             state = .loading
         } else if !forceFetching {

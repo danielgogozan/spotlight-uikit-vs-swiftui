@@ -35,8 +35,8 @@ class TopArticleView: UIView {
     func toCustom() {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) { [weak self] in
             guard let self = self else { return }
-            self.hoverView.backgroundColor = .gray
-            self.hoverView.layer.opacity = 0.2
+            self.hoverView.backgroundColor = Asset.Colors.black.color
+            self.hoverView.layer.opacity = 0.4
         }
     }
     
@@ -44,14 +44,20 @@ class TopArticleView: UIView {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) { [weak self] in
             guard let self = self else { return }
             self.hoverView.backgroundColor = .white
-            self.hoverView.layer.opacity = 0.5
+            self.hoverView.layer.opacity = 0.3
         }
     }
     
-    func setup(topHeadline: TopHeadline) {
+    func setup(topHeadline: TopHeadline, emphasize: Bool = false) {
         authorLabel.text = topHeadline.author
         titleLabel.text = topHeadline.title
         descriptionLabel.text = topHeadline.description
+        
+        if emphasize {
+            hoverView.backgroundColor = Asset.Colors.black.color
+            hoverView.layer.opacity = 0.4
+        }
+        
         guard let imageUrl = topHeadline.imageUrl else {
             imageView.image = Asset.Images.breakingNews.image
             return

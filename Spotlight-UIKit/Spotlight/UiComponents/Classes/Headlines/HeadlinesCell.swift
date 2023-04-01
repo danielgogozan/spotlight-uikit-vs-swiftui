@@ -21,9 +21,9 @@ class HeadlinesCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 10
     }
 
-    func setup(articleViewModel: ArticleViewModel ) {
+    func setup(articleViewModel: ArticleViewModel, emphasized: Bool = false) {
         self.articleViewModel = articleViewModel
-        bindViewModel()
+        bindViewModel(emphasized)
     }
     
     func toDefault() {
@@ -34,10 +34,10 @@ class HeadlinesCell: UICollectionViewCell {
         topArticleView.toCustom()
     }
     
-    private func bindViewModel() {
+    private func bindViewModel(_ emphasized: Bool = false) {
         articleViewModel?.articleSubject.bind {[weak self] article in
             guard let article = article else { return }
-            self?.topArticleView.setup(topHeadline: article)
+            self?.topArticleView.setup(topHeadline: article, emphasize: emphasized)
         }
     }
 }

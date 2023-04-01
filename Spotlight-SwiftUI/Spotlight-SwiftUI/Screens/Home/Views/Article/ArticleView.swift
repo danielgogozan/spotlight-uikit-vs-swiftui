@@ -33,7 +33,7 @@ struct ArticleView: View {
                 .cornerRadius(8)
                 .overlay(alignment: .leading) {
                     ZStack(alignment: .leading) {
-                        Color(.black.withAlphaComponent(0.5))
+                        Color(.black.withAlphaComponent(0.4))
                             .cornerRadius(8)
                         VStack(alignment: .leading) {
                             Text(article.title)

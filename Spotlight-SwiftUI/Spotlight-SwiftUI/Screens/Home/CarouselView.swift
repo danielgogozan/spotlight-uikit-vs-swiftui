@@ -20,7 +20,7 @@ struct CarouselView: View {
     }
     
     var body: some View {
-        let spacing: CGFloat = 5
+        let spacing: CGFloat = 10
         let widthOfHiddenCards: CGFloat = 10
         let cardHeight: CGFloat = availableSize.height * 0.35
         
