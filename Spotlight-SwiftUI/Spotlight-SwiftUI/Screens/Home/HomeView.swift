@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct HomeView: View {
-    let apiService: NewsServiceProtocol
+    var articleViewModel: ArticleViewModel
     @State var selection: Int?
     @EnvironmentObject var tabSettings: TabSettings
     
     var body: some View {
         NavigationView {
             ZStack {
-                NavigationLink(destination: SearchHistoryView(viewModel: SearchHistoryViewModel()),
+                NavigationLink(destination: SearchHistoryView(),
                                tag: 1,
                                selection: $selection) { }
                     
                 GeometryReader { geometry in
                     VStack(alignment: .leading) {
-                        ArticlesView(viewModel: ArticleViewModel(apiService: apiService),
+                        ArticlesView(viewModel: articleViewModel,
                                      availableSize: geometry.size)
                         Spacer()
                     }
@@ -61,6 +61,6 @@ struct HomeView: View {
     
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(apiService: .preview)
+        HomeView(articleViewModel: .preview)
     }
 }

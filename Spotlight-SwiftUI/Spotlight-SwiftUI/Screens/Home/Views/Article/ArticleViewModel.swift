@@ -26,6 +26,7 @@ class ArticleViewModel: StatefulViewModel<[Article], Error> {
         self.selectedCategories = selectedTags.compactMap { NewsCategory(rawValue: $0) }
         
         handleFilterChanges()
+        getArticles()
     }
     
     func getMore(_ presumedLastArticle: Article) {
@@ -43,7 +44,8 @@ class ArticleViewModel: StatefulViewModel<[Article], Error> {
         // MARK: - subscription called after return?
         $selectedTags
             .sink { [weak self] newTags in
-                guard let self else { return }
+                guard let self, !newTags.allSatisfy({ tag in self.selectedTags.contains(tag) })
+                else { return }
                 self.selectedCategories = newTags.compactMap { NewsCategory(rawValue: $0) }
                 self.currentPage = 0
                 self.getArticles(force: true)

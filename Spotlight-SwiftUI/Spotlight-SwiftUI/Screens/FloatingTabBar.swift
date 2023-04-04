@@ -36,10 +36,10 @@ class TabSettings: ObservableObject {
 
 struct FloatingTabBar: View {
     @State private var selectedTab = TabItem.home
-    let apiService = NewsService(apiService: .preview)
     @StateObject var tabSettings = TabSettings()
     @State private var offset: CGSize = .zero
     private var cancellables = [AnyCancellable]()
+    private let articleViewModel: ArticleViewModel = .preview
     
     init() {
         UITabBar.appearance().isHidden = true
@@ -48,7 +48,7 @@ struct FloatingTabBar: View {
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             TabView(selection: $selectedTab) {
-                HomeView(apiService: apiService)
+                HomeView(articleViewModel: articleViewModel)
                     .ignoresSafeArea(.all, edges: .bottom)
                     .tag(TabItem.home)
                 FavoriteView()

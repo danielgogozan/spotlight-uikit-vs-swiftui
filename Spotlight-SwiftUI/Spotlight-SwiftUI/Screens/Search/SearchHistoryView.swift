@@ -15,14 +15,13 @@ struct SearchHistoryView: View {
     
     @Environment(\.managedObjectContext) private var managedObjectContext
     @EnvironmentObject var tabSettings: TabSettings
-    @ObservedObject var viewModel: SearchHistoryViewModel
     
     @State private var selection: Int?
     @State private var query: String = ""
     
     var body: some View {
         ZStack {
-            NavigationLink(destination: SearchResultsView(viewModel: SearchResultsViewModel(apiService: .preview, filterData: FilterData(query: query, selectedCategory: .filter))),
+            NavigationLink(destination: searchResultsView,
                            tag: 1,
                            selection: $selection) { }
             
@@ -70,6 +69,12 @@ struct SearchHistoryView: View {
         }
     }
     
+    var searchResultsView: SearchResultsView {
+        lazy var searchResultViewModel = SearchResultsViewModel(apiService: .preview,
+                                                                          filterData: .init(query: query, selectedCategory: .filter))
+        return SearchResultsView(viewModel: searchResultViewModel)
+    }
+    
     func saveQuery() {
         guard !query.isEmpty else { return }
         
@@ -91,6 +96,6 @@ struct SearchHistoryView: View {
 
 struct SearchHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchHistoryView(viewModel: SearchHistoryViewModel())
+        SearchHistoryView()
     }
 }

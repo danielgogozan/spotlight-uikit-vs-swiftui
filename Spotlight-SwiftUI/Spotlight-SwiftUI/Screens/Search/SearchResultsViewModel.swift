@@ -44,7 +44,8 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
         self.apiService = apiService
         self.filterData = filterData
         super.init()
-        self.state = .content(headlines)
+        self.state = .idle
+        
         handleFilterChanges()
     }
     
@@ -68,7 +69,7 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
     func handleFilterChanges() {
         $selectedTags
             .sink { [weak self] newTags in
-                guard let self else { return }
+                guard let self, !self.filterData.query.isEmpty else { return }
                 var newFilterData = self.filterData
                 newFilterData.selectedCategory = newTags.compactMap { NewsCategory(rawValue: $0) }.first ?? self.filterData.selectedCategory
                 self.updateFilter(with: newFilterData)
@@ -77,7 +78,6 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
     }
     
     func getArticles(force forceFetching: Bool = false) {
-        return
         if state.payload?.isEmpty ?? true {
             state = .loading
         } else if !forceFetching {

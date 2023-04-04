@@ -12,7 +12,7 @@ struct ArticleView: View {
     var article: Article
     
     var imageUrl: URL? {
-        URL(string: article.imageUrl ?? "https://i0.wp.com/www.sudanspost.com/wp-content/uploads/2021/02/BREAKING.png")
+        URL(string: article.imageUrl ?? "https://static.vecteezy.com/system/resources/thumbnails/002/530/160/original/news-live-background-4k-free-video.jpg")
     }
     
     var articleDate: String {

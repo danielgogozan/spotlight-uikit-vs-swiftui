@@ -47,7 +47,6 @@
 		E7A179DB29D6265F00AE11D0 /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A179DA29D6265F00AE11D0 /* SearchHistoryView.swift */; };
 		E7A179DD29D627CB00AE11D0 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A179DC29D627CB00AE11D0 /* SearchResultsView.swift */; };
 		E7A179DF29D6289D00AE11D0 /* SizeReaderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A179DE29D6289D00AE11D0 /* SizeReaderModifier.swift */; };
-		E7A179E129D6336400AE11D0 /* SearchHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A179E029D6336400AE11D0 /* SearchHistoryViewModel.swift */; };
 		E7A179E329D6336C00AE11D0 /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A179E229D6336C00AE11D0 /* SearchResultsViewModel.swift */; };
 		E7B62E9B29D219EB0050D804 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B62E9A29D219EB0050D804 /* ExpandableText.swift */; };
 		E7BE3E3529A94329004B6EBF /* Spotlight_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BE3E3429A94329004B6EBF /* Spotlight_SwiftUIApp.swift */; };
@@ -130,7 +129,6 @@
 		E7A179DA29D6265F00AE11D0 /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
 		E7A179DC29D627CB00AE11D0 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		E7A179DE29D6289D00AE11D0 /* SizeReaderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeReaderModifier.swift; sourceTree = "<group>"; };
-		E7A179E029D6336400AE11D0 /* SearchHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewModel.swift; sourceTree = "<group>"; };
 		E7A179E229D6336C00AE11D0 /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
 		E7B62E9A29D219EB0050D804 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		E7BE3E3129A94329004B6EBF /* Spotlight-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spotlight-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,7 +351,6 @@
 			children = (
 				E7A179DC29D627CB00AE11D0 /* SearchResultsView.swift */,
 				E7A179DA29D6265F00AE11D0 /* SearchHistoryView.swift */,
-				E7A179E029D6336400AE11D0 /* SearchHistoryViewModel.swift */,
 				E7A179E229D6336C00AE11D0 /* SearchResultsViewModel.swift */,
 				E77301BF29D8402C00E18A22 /* FilterView.swift */,
 			);
@@ -677,7 +674,6 @@
 				E76A618B29BD07D900330222 /* StringUtils.swift in Sources */,
 				E78FC81D29BBAEE200F93DA7 /* StatefulViewModel.swift in Sources */,
 				E7BE3E7029A94876004B6EBF /* Fonts.swift in Sources */,
-				E7A179E129D6336400AE11D0 /* SearchHistoryViewModel.swift in Sources */,
 				E7CA07C529D0430B00BFF398 /* PillFilterView.swift in Sources */,
 				E77301C029D8402C00E18A22 /* FilterView.swift in Sources */,
 				E789D69229D0C4030095A08A /* ArticleDetailsView.swift in Sources */,
