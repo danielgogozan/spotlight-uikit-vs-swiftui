@@ -19,22 +19,13 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
     typealias State = ViewState<[Article], Error>
     private let apiService: NewsServiceProtocol
     private(set) var filterData: FilterData
+    private var currentPage = 1
+    private var cancellables = [AnyCancellable]()
     
     @Published var totalResults: Int = 0
     @Published var selectedTags: [String] = NewsCategory.allCases.filter { $0.rawValue == NewsCategory.filter.rawValue }
                                                         .map { $0.rawValue.capitalized }
     @Published var showLoadingView: Bool = false
-    private var currentPage = 1
-    private var cancellables = [AnyCancellable]()
-    
-    let headlines: [Article] = [Article(author: "Auth2", title: "Title1", description: "Desc1"),
-                                Article(author: "Auth3", title: "Title2", description: "Desc1"),
-                                Article(author: "Auth4", title: "Title3", description: "Desc1"),
-                                Article(author: "Auth5", title: "Title4", description: "Desc1"),
-                                Article(author: "Auth6", title: "Title5", description: "Desc1"),
-                                Article(author: "Auth7", title: "Title6", description: "Desc1"),
-                                Article(author: "Auth8", title: "Title7", description: "Desc1"),
-                                Article(author: "Auth9", title: "Title8", description: "Desc1")]
     
     var tags: [String] {
         NewsCategory.allCases.map { $0.rawValue.capitalized }
@@ -45,8 +36,6 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
         self.filterData = filterData
         super.init()
         self.state = .idle
-        
-        handleFilterChanges()
     }
     
     func getMore(_ presumedLastArticle: Article) {
@@ -71,7 +60,7 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
             .sink { [weak self] newTags in
                 guard let self, !self.filterData.query.isEmpty else { return }
                 var newFilterData = self.filterData
-                newFilterData.selectedCategory = newTags.compactMap { NewsCategory(rawValue: $0) }.first ?? self.filterData.selectedCategory
+                newFilterData.selectedCategory = newTags.compactMap { NewsCategory(rawValue: $0.lowercased()) }.first ?? self.filterData.selectedCategory
                 self.updateFilter(with: newFilterData)
             }
             .store(in: &cancellables)
@@ -94,10 +83,10 @@ class SearchResultsViewModel: StatefulViewModel<[Article], Error> {
             .flatMap { [weak self] articles in
                 guard let self else { return Just(State.loading) }
                 
-                let currentArticles: [Article] = self.currentPage > 0 ? (self.state.payload ?? []) : []
+                let currentArticles: [Article] = self.currentPage > 1 ? (self.state.payload ?? []) : []
                 let newArticles = articles.filter { new in !currentArticles.contains { article in article.title == new.title } }
                 let news = currentArticles + newArticles
-                let newState = State.content(news)
+                let newState = news.isEmpty ? State.noContent : State.content(news)
                 
                 self.showLoadingView = false
                 

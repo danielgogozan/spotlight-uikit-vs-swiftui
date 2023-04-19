@@ -7,7 +7,6 @@
 
 import Foundation
 
-#if DEBUG
 
 extension APIServiceProtocol where Self == APIService {
     static var preview: APIServiceProtocol {
@@ -44,5 +43,3 @@ extension LatestNewsViewModel {
         LatestNewsViewModel(apiService: .preview, articles: [])
     }
 }
-
-#endif

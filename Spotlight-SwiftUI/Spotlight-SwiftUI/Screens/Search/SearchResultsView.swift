@@ -25,15 +25,26 @@ struct SearchResultsView: View {
                     }
                                    .padding([.top], 20)
                     
-                    StatefulView(contentView: contentView, viewModel: viewModel)
+                    StatefulView(contentView: contentView,
+                                 noContentView: AnyView(EmptySearchView()),
+                                 viewModel: viewModel)
                 }
             }
+        }
+        .onAppear {
+            viewModel.handleFilterChanges()
         }
         .withSearchBar(searchBar) {
             presentationMode.wrappedValue.dismiss()
         }
         .sheet(isPresented: $showFilter) {
-            FilterView()
+            FilterView(sort: [viewModel.filterData.selectedSortCategory?.rawValue ?? ""],
+                       language: [viewModel.filterData.selectedLanguageCategory?.rawValue ?? ""]) { sorter, language in
+                var newFilterData = viewModel.filterData
+                newFilterData.selectedSortCategory = sorter
+                newFilterData.selectedLanguageCategory = language
+                viewModel.updateFilter(with: newFilterData)
+            }
                 .presentationDetents([.fraction(0.47)])
         }
     }
@@ -90,6 +101,6 @@ struct SearchResultsView: View {
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultsView(viewModel: SearchResultsViewModel(apiService: .preview, filterData: FilterData(query: "", selectedCategory: .filter)))
+        SearchResultsView(viewModel: SearchResultsViewModel(apiService: NewsService.preview, filterData: FilterData(query: "", selectedCategory: .filter)))
     }
 }

@@ -126,7 +126,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(viewModel: LoginViewModel(apiService: .preview,
+        LoginView(viewModel: LoginViewModel(apiService: AuthService.preview,
                                             keychainManager: KeychainManager(keychain: Keychain())))
     }
 }

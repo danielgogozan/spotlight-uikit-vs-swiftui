@@ -16,15 +16,11 @@ struct SearchHistoryView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
     @EnvironmentObject var tabSettings: TabSettings
     
-    @State private var selection: Int?
+    @State private var isPresentingResults: Bool = false
     @State private var query: String = ""
     
     var body: some View {
         ZStack {
-            NavigationLink(destination: searchResultsView,
-                           tag: 1,
-                           selection: $selection) { }
-            
             List(history.compactMap { $0.key }.filter { !$0.isEmpty }, id: \.self) { key in
                 HStack {
                     Image(uiImage: Asset.Images.history.image)
@@ -45,7 +41,7 @@ struct SearchHistoryView: View {
                 }
                 .onTapGesture {
                     query = key
-                    selection = 1
+                    isPresentingResults.toggle()
                 }
             }
             .listStyle(.plain)
@@ -53,6 +49,9 @@ struct SearchHistoryView: View {
         .withSearchBar(searchBar)
         .onAppear {
             tabSettings.show = false
+        }
+        .navigationDestination(isPresented: $isPresentingResults) {
+            searchResultsView
         }
     }
     
@@ -65,13 +64,13 @@ struct SearchHistoryView: View {
     var searchBar: SearchBarView {
         SearchBarView(searchKey: $query, autoFocus: true, image: Asset.Images.rightArrow.image) {
             saveQuery()
-            selection = 1
+            isPresentingResults.toggle()
         }
     }
     
     var searchResultsView: SearchResultsView {
-        lazy var searchResultViewModel = SearchResultsViewModel(apiService: .preview,
-                                                                          filterData: .init(query: query, selectedCategory: .filter))
+        let searchResultViewModel = SearchResultsViewModel(apiService: NewsService.preview,
+                                                           filterData: .init(query: query, selectedCategory: .filter))
         return SearchResultsView(viewModel: searchResultViewModel)
     }
     

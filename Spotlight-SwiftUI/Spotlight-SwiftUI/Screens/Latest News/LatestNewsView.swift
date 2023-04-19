@@ -43,6 +43,6 @@ struct LatestNewsView: View {
 
 struct LatestNewsView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestNewsView(viewModel: .preview)
+        LatestNewsView(viewModel: LatestNewsViewModel.preview)
     }
 }

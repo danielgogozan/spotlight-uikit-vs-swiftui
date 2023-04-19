@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct FilterView: View {
-    @State var sort: [String] = []
-    @State var language: [String] = []
+    @State var sort: [String]
+    @State var language: [String]
+    var filterDidSave: ((Sorter?, Language?) -> Void)
+    
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(spacing: 24) {
@@ -68,7 +71,10 @@ struct FilterView: View {
     
     var saveButton: some View {
         Button(L10n.saveBtn) {
-            print("Save")
+            let sorter = Sorter(rawValue: sort.first ?? "")
+            let language = Language(rawValue: language.first ?? "")    
+            filterDidSave(sorter, language)
+            presentationMode.wrappedValue.dismiss()
         }
         .padding(5)
         .frame(maxWidth: .infinity)
@@ -81,6 +87,6 @@ struct FilterView: View {
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterView()
+        FilterView(sort: [""], language: [""], filterDidSave: { _, _ in })
     }
 }

@@ -39,7 +39,7 @@ struct FloatingTabBar: View {
     @StateObject var tabSettings = TabSettings()
     @State private var offset: CGSize = .zero
     private var cancellables = [AnyCancellable]()
-    private let articleViewModel: ArticleViewModel = .preview
+    private let articleViewModel: ArticleViewModel = ArticleViewModel.preview
     
     init() {
         UITabBar.appearance().isHidden = true

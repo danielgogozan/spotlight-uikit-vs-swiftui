@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct HeadlinesView: View {
+    @State private var isPresentingDetails = false
+    @State private var selectedHeadline: Article = .init()
+    
     @ObservedObject var viewModel: HeadlineViewModel
     @State var selection: Int?
-    @State private var selectedHeadline: Article = .init()
     var availableSize: CGSize
     
     var body: some View {
@@ -23,20 +25,19 @@ struct HeadlinesView: View {
     
     var contentView: some View {
         ZStack {
-            NavigationLink(destination: ArticleDetailsView(article: selectedHeadline),
-                           tag: 1,
-                           selection: $selection) { }
-            
             CarouselView(UIState: .init(activeCardId: ""), articles: viewModel.state.payload ?? [], availableSize: availableSize) { article in
                 selectedHeadline = article
-                selection = 1
+                isPresentingDetails.toggle()
             }
+        }
+        .navigationDestination(isPresented: $isPresentingDetails) {
+            ArticleDetailsView(article: selectedHeadline)
         }
     }
 }
 
 struct HeadlinesView_Previews: PreviewProvider {
     static var previews: some View {
-        HeadlinesView(viewModel: .preview, availableSize: CGSize(width: 300, height: 500))
+        HeadlinesView(viewModel: HeadlineViewModel.preview, availableSize: CGSize(width: 300, height: 500))
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F0EC233A4BC9601FEA1EB2D /* Pods_Spotlight_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1FC83B5FF8CEE4CC158ADD /* Pods_Spotlight_SwiftUI.framework */; };
 		E723D8B129D055F000C20D6A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723D8B029D055F000C20D6A /* String+.swift */; };
+		E743EFD529E2A775001CC6FA /* EmptySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E743EFD429E2A775001CC6FA /* EmptySearchView.swift */; };
 		E76A618029BCE65000330222 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76A617F29BCE65000330222 /* LoginView.swift */; };
 		E76A618329BD03DD00330222 /* Font+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76A618229BD03DD00330222 /* Font+Ext.swift */; };
 		E76A618529BD03FE00330222 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76A618429BD03FE00330222 /* UIColor+Ext.swift */; };
@@ -90,6 +91,7 @@
 		3C1FC83B5FF8CEE4CC158ADD /* Pods_Spotlight_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotlight_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		714C3EEC5971895C80B69563 /* Pods-Spotlight-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotlight-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Spotlight-SwiftUI/Pods-Spotlight-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		E723D8B029D055F000C20D6A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		E743EFD429E2A775001CC6FA /* EmptySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchView.swift; sourceTree = "<group>"; };
 		E76A617F29BCE65000330222 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E76A618229BD03DD00330222 /* Font+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Ext.swift"; sourceTree = "<group>"; };
 		E76A618429BD03FE00330222 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				E7A179DA29D6265F00AE11D0 /* SearchHistoryView.swift */,
 				E7A179E229D6336C00AE11D0 /* SearchResultsViewModel.swift */,
 				E77301BF29D8402C00E18A22 /* FilterView.swift */,
+				E743EFD429E2A775001CC6FA /* EmptySearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				E76A618329BD03DD00330222 /* Font+Ext.swift in Sources */,
 				E76C245329BF436300B02812 /* Preview.swift in Sources */,
 				E798BDB729D1C4840055F309 /* LatestNewsViewModel.swift in Sources */,
+				E743EFD529E2A775001CC6FA /* EmptySearchView.swift in Sources */,
 				E7BE3E8429A94B10004B6EBF /* Constants.swift in Sources */,
 				E7A179DD29D627CB00AE11D0 /* SearchResultsView.swift in Sources */,
 				E7BE3E3729A94329004B6EBF /* ContentView.swift in Sources */,

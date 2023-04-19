@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ArticlesView: View {
-    @State private var headlineViewModel = HeadlineViewModel(apiService: .preview)
+    @State private var isPresentingLatest = false
+    @State private var headlineViewModel = HeadlineViewModel(apiService: NewsService.preview)
     @ObservedObject var viewModel: ArticleViewModel
     
     var availableSize: CGSize
@@ -57,24 +58,24 @@ struct ArticlesView: View {
                 .font(FontFamily.NewYorkSmall.heavy.font(size: 22).swiftUI)
             Spacer()
             
-            NavigationLink(destination: LatestNewsView(viewModel: LatestNewsViewModel(apiService: .preview, articles: headlineViewModel.state.payload ?? [])),
-                           tag: 1,
-                           selection: $selection) {
-                Button {
-                    selection = 1
-                } label: {
-                    HStack(spacing: 20) {
-                        Text(L10n.seeAll)
-                            .font(FontFamily.Nunito.regular.font(size: 16).swiftUI)
-                            .foregroundColor(Asset.Colors.secondary.color.swiftUI)
-                        Image(uiImage: Asset.Images.rightArrow.image)
-                            .resizable()
-                            .frame(width: 10, height: 10)
-                            .foregroundColor(Asset.Colors.secondary.color.swiftUI)
-                    }
+            Button {
+                isPresentingLatest.toggle()
+            } label: {
+                HStack(spacing: 20) {
+                    Text(L10n.seeAll)
+                        .font(FontFamily.Nunito.regular.font(size: 16).swiftUI)
+                        .foregroundColor(Asset.Colors.secondary.color.swiftUI)
+                    Image(uiImage: Asset.Images.rightArrow.image)
+                        .resizable()
+                        .frame(width: 10, height: 10)
+                        .foregroundColor(Asset.Colors.secondary.color.swiftUI)
                 }
             }
-                           .navigationTitle("")
+            .navigationTitle("")
+            .navigationDestination(isPresented: $isPresentingLatest) {
+                LatestNewsView(viewModel: LatestNewsViewModel(apiService: NewsService.preview,
+                                                              articles: headlineViewModel.state.payload ?? []))
+            }
         }
         .padding([.top], 30)
         .padding([.leading, .trailing], 15)

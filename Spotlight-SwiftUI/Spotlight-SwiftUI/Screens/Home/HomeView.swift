@@ -8,17 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var isPresentingSearch: Bool = false
+    
     var articleViewModel: ArticleViewModel
-    @State var selection: Int?
     @EnvironmentObject var tabSettings: TabSettings
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                NavigationLink(destination: SearchHistoryView(),
-                               tag: 1,
-                               selection: $selection) { }
-                    
                 GeometryReader { geometry in
                     VStack(alignment: .leading) {
                         ArticlesView(viewModel: articleViewModel,
@@ -36,6 +33,9 @@ struct HomeView: View {
             .onAppear {
                 tabSettings.show = true
             }
+            .navigationDestination(isPresented: $isPresentingSearch) {
+                SearchHistoryView()
+            }
         }
         .accentColor(Asset.Colors.black.color.swiftUI) // mandatory on NavigationView
     }
@@ -46,7 +46,7 @@ struct HomeView: View {
             SearchBarView(searchKey: .constant(""))
                 .frame(width: 330)
                 .onTapGesture {
-                    selection = 1
+                    isPresentingSearch.toggle()
                 }
             Spacer()
             Button { } label: {
@@ -61,6 +61,6 @@ struct HomeView: View {
     
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(articleViewModel: .preview)
+        HomeView(articleViewModel: ArticleViewModel.preview)
     }
 }
