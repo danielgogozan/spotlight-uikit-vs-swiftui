@@ -32,32 +32,13 @@ class TopArticleView: UIView {
         containerView.layer.cornerRadius = 10
     }
     
-    func toCustom() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) { [weak self] in
-            guard let self = self else { return }
-            self.hoverView.backgroundColor = Asset.Colors.black.color
-            self.hoverView.layer.opacity = 0.4
-        }
-    }
-    
-    func toDefault() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) { [weak self] in
-            guard let self = self else { return }
-            self.hoverView.backgroundColor = .white
-            self.hoverView.layer.opacity = 0.3
-        }
-    }
-    
-    func setup(topHeadline: TopHeadline, emphasize: Bool = false) {
+    func setup(topHeadline: TopHeadline) {
         authorLabel.text = topHeadline.author
         titleLabel.text = topHeadline.title
         descriptionLabel.text = topHeadline.description
-        
-        if emphasize {
-            hoverView.backgroundColor = Asset.Colors.black.color
-            hoverView.layer.opacity = 0.4
-        }
-        
+        hoverView.backgroundColor = Asset.Colors.black.color
+        hoverView.layer.opacity = 0.4
+
         guard let imageUrl = topHeadline.imageUrl else {
             imageView.image = Asset.Images.breakingNews.image
             return

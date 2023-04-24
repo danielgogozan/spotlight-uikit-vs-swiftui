@@ -89,8 +89,6 @@
 		F2723E8A27CBBCEE0099E10F /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2723E8927CBBCEE0099E10F /* ArticleViewModel.swift */; };
 		F2723E8D27CD35220099E10F /* LoadingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2723E8C27CD35210099E10F /* LoadingTableCell.swift */; };
 		F2723E8F27CD35740099E10F /* LoadingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2723E8E27CD35740099E10F /* LoadingTableCell.xib */; };
-		F27AB85827C6B6C900CE434E /* HPaginatedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AB85727C6B6C900CE434E /* HPaginatedCollectionViewController.swift */; };
-		F27AB85A27C6B9B000CE434E /* HeadlinesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AB85927C6B9AF00CE434E /* HeadlinesCollectionViewController.swift */; };
 		F27BBC4327E23E55004A836C /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F27BBC4227E23E55004A836C /* Nunito-SemiBoldItalic.ttf */; };
 		F27BBC4427E23E55004A836C /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F27BBC4227E23E55004A836C /* Nunito-SemiBoldItalic.ttf */; };
 		F27BBC4527E23E55004A836C /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F27BBC4227E23E55004A836C /* Nunito-SemiBoldItalic.ttf */; };
@@ -281,8 +279,6 @@
 		F2723E8C27CD35210099E10F /* LoadingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableCell.swift; sourceTree = "<group>"; };
 		F2723E8E27CD35740099E10F /* LoadingTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableCell.xib; sourceTree = "<group>"; };
 		F27A13C127DE5D1100B0910B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		F27AB85727C6B6C900CE434E /* HPaginatedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPaginatedCollectionViewController.swift; sourceTree = "<group>"; };
-		F27AB85927C6B9AF00CE434E /* HeadlinesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesCollectionViewController.swift; sourceTree = "<group>"; };
 		F27BBC4227E23E55004A836C /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		F27BBC4627E23F51004A836C /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		F27CC46727F474F0001EFB8F /* Storage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Storage.xcdatamodel; sourceTree = "<group>"; };
@@ -454,7 +450,6 @@
 			children = (
 				F2723E7B27CA43550099E10F /* HeadlinesTableViewCell.swift */,
 				F2FBAAA327C5528F00D3556A /* HeadlinesCell.swift */,
-				F27AB85927C6B9AF00CE434E /* HeadlinesCollectionViewController.swift */,
 			);
 			path = Headlines;
 			sourceTree = "<group>";
@@ -914,7 +909,6 @@
 				F21F28AD27D107CE0062F981 /* Headlines */,
 				F230D21227D78C7F00B1C242 /* Tags */,
 				F2D3025A27BFB37A00B9FA56 /* BaseViewController.swift */,
-				F27AB85727C6B6C900CE434E /* HPaginatedCollectionViewController.swift */,
 				F2FBAA8C27C5102200D3556A /* SearchBarView.swift */,
 				F2DD1C3027C8159B00C47068 /* TagViewCell.swift */,
 				F2A530EC27C7D54700068361 /* GradientImageView.swift */,
@@ -1338,9 +1332,7 @@
 				F246F59927DB62340027BD5F /* UIView+Ext.swift in Sources */,
 				F2C1D55627BD63750052FA62 /* DependencyContainer.swift in Sources */,
 				F24C2EA627DA08BD00D4D94D /* ArticleDetailsViewController.swift in Sources */,
-				F27AB85A27C6B9B000CE434E /* HeadlinesCollectionViewController.swift in Sources */,
 				F27E6ED0282A59E2006A1AE5 /* SButton.swift in Sources */,
-				F27AB85827C6B6C900CE434E /* HPaginatedCollectionViewController.swift in Sources */,
 				F2FBAAA827C580F600D3556A /* UICollectionView+Ext.swift in Sources */,
 				F2C1D56427BD643C0052FA62 /* FavoriteModuleFactory.swift in Sources */,
 				F2279BF527BBE3E900D9F344 /* SceneDelegate.swift in Sources */,

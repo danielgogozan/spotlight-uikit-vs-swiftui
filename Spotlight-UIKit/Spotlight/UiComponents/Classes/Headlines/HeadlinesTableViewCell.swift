@@ -16,13 +16,7 @@ class HeadlinesTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var headlinesCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    
-    private var indexOfCellBeforeDragging = 0
-    private var indexOfCurrentCell = 0
     private var articleViewModels: [ArticleViewModel] = []
-    private var firstTimeLoaded = true
-    
-    var customizerDelegate: CellCostumizationDelegate?
     var navigationDelegate: HeadlinesNavigationDelegate?
     
     override func awakeFromNib() {
@@ -32,8 +26,6 @@ class HeadlinesTableViewCell: UITableViewCell {
         headlinesCollectionView.registerCell(ofType: HeadlinesCell.self)
         headlinesCollectionView.showsHorizontalScrollIndicator = false
         
-        customizerDelegate = self
-    
         configureCollectionViewLayout()
         
         activityIndicator.color = Asset.Colors.primary.color
@@ -94,9 +86,7 @@ extension HeadlinesTableViewCell: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueCell(ofType: HeadlinesCell.self, at: indexPath)
-            let shouldEmphasize = indexPath.row == 0 && firstTimeLoaded
-            cell.setup(articleViewModel: articleViewModels[indexPath.item], emphasized: shouldEmphasize)
-            if shouldEmphasize { firstTimeLoaded = false }
+            cell.setup(articleViewModel: articleViewModels[indexPath.item])
             return cell
         default:
             return UICollectionViewCell()
@@ -108,80 +98,9 @@ extension HeadlinesTableViewCell: UICollectionViewDataSource {
     }
 }
 
-// MARK: - Cell Customizer
-extension HeadlinesTableViewCell: CellCostumizationDelegate {
-    func defaultCustomization(at indexPath: IndexPath) {
-        guard let cell = headlinesCollectionView.cellForItem(at: indexPath) as? HeadlinesCell else { return }
-        cell.toDefault()
-    }
-    
-    func customCustomization(at indexPath: IndexPath) {
-        guard let cell = headlinesCollectionView.cellForItem(at: indexPath) as? HeadlinesCell else { return }
-        cell.toCustom()
-    }
-}
-
 // MARK: - Horizontal Paginated Collection View
 extension HeadlinesTableViewCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        indexOfCellBeforeDragging = indexOfMainCell()
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        /// stops scrollView sliding
-        targetContentOffset.pointee = scrollView.contentOffset
-        
-        /// this will get the current cell if there is a SWIPE GESTURE (fast) or the previous/next cell if there is SLIDING (slow)
-        let indexOfMainCell = self.indexOfMainCell()
-        
-        let swipeVelocityThreshold: CGFloat = 0.3 /// how strong should the user swipe in order to change the current cell
-        let count = 10
-        let slideToNext = indexOfCellBeforeDragging + 1 < count && velocity.x > swipeVelocityThreshold
-        let slideToPrev = indexOfCellBeforeDragging - 1 >= 0 && velocity.x < -swipeVelocityThreshold
-        let mainIsPrevious = indexOfMainCell == indexOfCellBeforeDragging
-        
-        let didUseSwipeGestureToSkipCell = mainIsPrevious && (slideToNext || slideToPrev)
-        
-        if didUseSwipeGestureToSkipCell {
-            /// activated on short press scroll aka SWIPE GESTURE
-            indexOfCurrentCell = indexOfCellBeforeDragging + (slideToNext ? 1 : -1)
-            let nextIndexPath = IndexPath(row: indexOfCurrentCell, section: 0)
-            
-            UIView.animate(
-                withDuration: 0.4,
-                delay: 0,
-                usingSpringWithDamping: 1,
-                initialSpringVelocity: velocity.x,
-                options: .allowUserInteraction,
-                animations: { [weak self] in
-                    self?.headlinesCollectionView.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
-                },
-                completion: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.customizerDelegate?.customCustomization(at: nextIndexPath)
-                    self.customizerDelegate?.defaultCustomization(at: IndexPath(row: self.indexOfCellBeforeDragging, section: 0))
-                })
-            headlinesCollectionView.collectionViewLayout.invalidateLayout()
-        } else {
-            /// activated on long press scroll aka SLIDING
-            indexOfCurrentCell = indexOfMainCell
-            let indexPath = IndexPath(row: indexOfMainCell, section: 0)
-            headlinesCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            
-            /// prevent adding customization when main cell hasn't changed
-            if indexOfMainCell != indexOfCellBeforeDragging {
-                customizerDelegate?.customCustomization(at: indexPath)
-                customizerDelegate?.defaultCustomization(at: IndexPath(row: indexOfCellBeforeDragging, section: 0))
-                headlinesCollectionView.collectionViewLayout.invalidateLayout()
-            }
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.item == indexOfCurrentCell {
-            return CGSize(width: collectionViewFlowLayout.itemSize.width, height: collectionViewFlowLayout.itemSize.height + 10)
-        }
         return collectionViewFlowLayout.itemSize
     }
 }

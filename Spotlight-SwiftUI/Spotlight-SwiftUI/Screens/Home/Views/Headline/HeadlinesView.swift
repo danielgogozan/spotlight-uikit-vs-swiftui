@@ -24,14 +24,19 @@ struct HeadlinesView: View {
     }
     
     var contentView: some View {
-        ZStack {
-            CarouselView(UIState: .init(activeCardId: ""), articles: viewModel.state.payload ?? [], availableSize: availableSize) { article in
-                selectedHeadline = article
-                isPresentingDetails.toggle()
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack(spacing: 10) {
+                ForEach(viewModel.state.payload ?? [], id: \.title) { headline in
+                    NavigationLink {
+                        ArticleDetailsView(article: headline)
+                    } label: {
+                        HeadlineView(headline: headline)
+                            .frame(width: availableSize.width * 0.9,
+                                   height: availableSize.height * 0.3)
+                    }
+                }
             }
-        }
-        .navigationDestination(isPresented: $isPresentingDetails) {
-            ArticleDetailsView(article: selectedHeadline)
+            .padding([.leading, .trailing], 10)
         }
     }
 }

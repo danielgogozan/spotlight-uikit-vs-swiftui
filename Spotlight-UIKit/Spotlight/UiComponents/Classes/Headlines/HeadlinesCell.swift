@@ -21,23 +21,15 @@ class HeadlinesCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 10
     }
 
-    func setup(articleViewModel: ArticleViewModel, emphasized: Bool = false) {
+    func setup(articleViewModel: ArticleViewModel) {
         self.articleViewModel = articleViewModel
-        bindViewModel(emphasized)
+        bindViewModel()
     }
     
-    func toDefault() {
-        topArticleView.toDefault()
-    }
-    
-    func toCustom() {
-        topArticleView.toCustom()
-    }
-    
-    private func bindViewModel(_ emphasized: Bool = false) {
+    private func bindViewModel() {
         articleViewModel?.articleSubject.bind {[weak self] article in
             guard let article = article else { return }
-            self?.topArticleView.setup(topHeadline: article, emphasize: emphasized)
+            self?.topArticleView.setup(topHeadline: article)
         }
     }
 }
