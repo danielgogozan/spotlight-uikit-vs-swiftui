@@ -99,7 +99,7 @@ private extension LatestNewsViewModel {
             case .success(let news):
                 let articles = news.articles
                 // TODO: - added to favorites check
-                let articleViewModels = articles.map { ArticleViewModel(article: $0, addedToFavorite: false)}
+                let articleViewModels = articles.map { ArticleViewModel(article: $0)}
             
                 var currentNews = self.latestNews.value
                 currentNews.append(contentsOf: articleViewModels)

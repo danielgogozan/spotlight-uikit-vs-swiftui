@@ -100,7 +100,7 @@ extension HomeViewModel {
             
             switch result {
             case .success(let news):
-                let articleViewModels = news.articles.map { ArticleViewModel(article: $0, addedToFavorite: false)}
+                let articleViewModels = news.articles.map { ArticleViewModel(article: $0) }
                 self.topHeadlines.value = articleViewModels
             case .failure(let failure):
                 print("Error: \(failure.localizedDescription)")
@@ -131,10 +131,7 @@ extension HomeViewModel {
                 guard news.totalResults > 0 else { return }
                 let articles = news.articles
                 let articleViewModels = articles.map { currentArticle -> ArticleViewModel in
-                    let articleViewModel = ArticleViewModel(article: currentArticle,
-                                                            addedToFavorite: self.checkIfAddedToFavorite(article: currentArticle))
-                    FavoriteMulticastDelegate.shared.addDelegate(articleViewModel)
-                    return articleViewModel
+                    return ArticleViewModel(article: currentArticle)
                 }
                 self.news.value.append(contentsOf: articleViewModels)
             case .failure(let failure):

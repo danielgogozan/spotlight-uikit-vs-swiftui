@@ -19,7 +19,6 @@ class DependencyContainer {
     lazy var searchViewModel = SearchViewModel(newsApiService: newsApiService, searchManager: searchManager)
     lazy var latestNewsViewModel = LatestNewsViewModel(newsApiService: newsApiService)
     lazy var filterViewModel = FilterViewModel()
-    lazy var favoriteViewModel = FavoriteViewModel()
     lazy var loginViewModel = LoginViewModel(apiService: authService, keychainManager: keychainManager)
     
     // MARK: - Storage Managers

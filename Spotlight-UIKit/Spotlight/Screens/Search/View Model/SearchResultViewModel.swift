@@ -76,8 +76,7 @@ private extension SearchResultViewModel {
             case .success(let news):
                 let articleViewModels = news.articles
                     .map { article -> ArticleViewModel in
-                        let articleViewModel = ArticleViewModel(article: article, addedToFavorite: self.checkIfAddedToFavorite(article: article))
-                        FavoriteMulticastDelegate.shared.addDelegate(articleViewModel)
+                        let articleViewModel = ArticleViewModel(article: article)
                         return articleViewModel
                     }
                 

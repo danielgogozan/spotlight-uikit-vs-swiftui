@@ -14,7 +14,6 @@ protocol FavoriteModuleFactory {
 extension DependencyContainer: FavoriteModuleFactory {
     func createFavoriteViewController() -> FavoriteViewController {
         let viewController = FavoriteViewController.instantiate(from: .Tab)
-        viewController.viewModel = favoriteViewModel
         return viewController
     }
 }

@@ -11,9 +11,7 @@
 		3144082B77B3CAC283761BA9 /* Pods_SpotlightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04275E84D6337BD0A2D547C /* Pods_SpotlightTests.framework */; };
 		C16FAAD50470BE5ED778FE70 /* Pods_Spotlight_SpotlightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9E0963AB1A0B87C8C64BC4E /* Pods_Spotlight_SpotlightUITests.framework */; };
 		E7D58C89299EDFF7006BFFFA /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D58C88299EDFF7006BFFFA /* Observable.swift */; };
-		F208370527FDA006000B8AF7 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F208370427FDA006000B8AF7 /* FavoriteViewModel.swift */; };
 		F208370727FDA014000B8AF7 /* FavoriteStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F208370627FDA014000B8AF7 /* FavoriteStorageManager.swift */; };
-		F208370927FDAB68000B8AF7 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F208370827FDAB68000B8AF7 /* FavoriteCollectionViewCell.swift */; };
 		F2091A5F27DA93FB00485BD2 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2091A5E27DA93FB00485BD2 /* CustomNavigationController.swift */; };
 		F20E325E28362087007E136D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E325D28362087007E136D /* LoginViewModel.swift */; };
 		F20E3260283620E9007E136D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20E325F283620E9007E136D /* AuthService.swift */; };
@@ -144,8 +142,6 @@
 		F2C1D58327BDA4410052FA62 /* Tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C1D58227BDA4410052FA62 /* Tab.storyboard */; };
 		F2C1D58527BDA4500052FA62 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C1D58427BDA4500052FA62 /* Auth.storyboard */; };
 		F2CF378D280EBD0000032798 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2CF378C280EBD0000032798 /* FavoriteCollectionViewCell.xib */; };
-		F2CF378F280EE99800032798 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CF378E280EE99800032798 /* MulticastDelegate.swift */; };
-		F2CF3791280FEAB700032798 /* FavoriteMulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CF3790280FEAB700032798 /* FavoriteMulticastDelegate.swift */; };
 		F2D3025B27BFB37A00B9FA56 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D3025A27BFB37A00B9FA56 /* BaseViewController.swift */; };
 		F2D3025D27BFB44300B9FA56 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D3025C27BFB44300B9FA56 /* UIButton+Ext.swift */; };
 		F2D56BE128395E230033E587 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D56BE028395E230033E587 /* Credentials.swift */; };
@@ -201,9 +197,7 @@
 		B6A2AD4BF0F0690FFFA4A754 /* Pods_Spotlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6890802D0D33FD93201BC3F /* Pods-Spotlight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotlight.release.xcconfig"; path = "Target Support Files/Pods-Spotlight/Pods-Spotlight.release.xcconfig"; sourceTree = "<group>"; };
 		E7D58C88299EDFF7006BFFFA /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		F208370427FDA006000B8AF7 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		F208370627FDA014000B8AF7 /* FavoriteStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStorageManager.swift; sourceTree = "<group>"; };
-		F208370827FDAB68000B8AF7 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		F2091A5E27DA93FB00485BD2 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		F20E325D28362087007E136D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F20E325F283620E9007E136D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -336,8 +330,6 @@
 		F2C1D58227BDA4410052FA62 /* Tab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tab.storyboard; sourceTree = "<group>"; };
 		F2C1D58427BDA4500052FA62 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		F2CF378C280EBD0000032798 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
-		F2CF378E280EE99800032798 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
-		F2CF3790280FEAB700032798 /* FavoriteMulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMulticastDelegate.swift; sourceTree = "<group>"; };
 		F2D3025A27BFB37A00B9FA56 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F2D3025C27BFB44300B9FA56 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		F2D56BE028395E230033E587 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
@@ -416,23 +408,6 @@
 				A04275E84D6337BD0A2D547C /* Pods_SpotlightTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F208370A27FDAB70000B8AF7 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				F2C1D56C27BD6CB60052FA62 /* FavoriteViewController.swift */,
-				F208370827FDAB68000B8AF7 /* FavoriteCollectionViewCell.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		F208370B27FDAB7F000B8AF7 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				F208370427FDA006000B8AF7 /* FavoriteViewModel.swift */,
-			);
-			path = "View Models";
 			sourceTree = "<group>";
 		};
 		F20E325C2836206F007E136D /* View Model */ = {
@@ -790,10 +765,7 @@
 		F2C1D54527BD489A0052FA62 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				F208370B27FDAB7F000B8AF7 /* View Models */,
-				F208370A27FDAB70000B8AF7 /* UI */,
-				F2CF378E280EE99800032798 /* MulticastDelegate.swift */,
-				F2CF3790280FEAB700032798 /* FavoriteMulticastDelegate.swift */,
+				F2C1D56C27BD6CB60052FA62 /* FavoriteViewController.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -1345,7 +1317,6 @@
 				F24DB9CC27C12DD800C9C9B3 /* Article.swift in Sources */,
 				F2C1D54827BD4F450052FA62 /* AppCoordinator.swift in Sources */,
 				F21E767D27E3571800369FCB /* FilterModalViewController.swift in Sources */,
-				F2CF3791280FEAB700032798 /* FavoriteMulticastDelegate.swift in Sources */,
 				F2FBAA8D27C5102200D3556A /* SearchBarView.swift in Sources */,
 				F2FD0BD427C909800003CF85 /* ArticleViewCell.swift in Sources */,
 				F25BD26527BE56DF00CA300A /* Fonts.swift in Sources */,
@@ -1363,9 +1334,7 @@
 				F2450B5527E64E44009A2E97 /* FilterViewModel.swift in Sources */,
 				F230D20527D3800100B1C242 /* SearchViewModel.swift in Sources */,
 				F2723E8227CA4C390099E10F /* TagsTableViewCell.swift in Sources */,
-				F208370927FDAB68000B8AF7 /* FavoriteCollectionViewCell.swift in Sources */,
 				F2723E8427CB9CDB0099E10F /* NewsTableHeader.swift in Sources */,
-				F2CF378F280EE99800032798 /* MulticastDelegate.swift in Sources */,
 				F246F59927DB62340027BD5F /* UIView+Ext.swift in Sources */,
 				F2C1D55627BD63750052FA62 /* DependencyContainer.swift in Sources */,
 				F24C2EA627DA08BD00D4D94D /* ArticleDetailsViewController.swift in Sources */,
@@ -1404,7 +1373,6 @@
 				F2A530ED27C7D54700068361 /* GradientImageView.swift in Sources */,
 				F27E6ED2282A8219006A1AE5 /* SocialMediaView.swift in Sources */,
 				F2450B5E27E65F33009A2E97 /* ButtonCollectionCell.swift in Sources */,
-				F208370527FDA006000B8AF7 /* FavoriteViewModel.swift in Sources */,
 				F21E767927E33FFF00369FCB /* InfoTableCell.swift in Sources */,
 				F2D3025D27BFB44300B9FA56 /* UIButton+Ext.swift in Sources */,
 				F27BBC4727E23F51004A836C /* StringUtils.swift in Sources */,

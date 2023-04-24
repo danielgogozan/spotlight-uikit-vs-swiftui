@@ -18,7 +18,6 @@ class ArticleView: UIView {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var favoriteButton: UIButton!
     
-    var addToFavorite: (() -> Void)?
     var isAddedToFavorite = false {
         didSet {
             favoriteButton.setImage(Asset.Images.favorite.image.withColor( isAddedToFavorite ? Asset.Colors.redish.color : .white), for: .normal)
@@ -60,20 +59,14 @@ class ArticleView: UIView {
         dateLabel.font = FontFamily.Nunito.regular.font(size: 12)
     }
     
-    func setup(article: Article?, publishedDate: String, isAddedToFavorite: Bool, addToFavorite: @escaping () -> Void) {
+    func setup(article: Article?, publishedDate: String, isAddedToFavorite: Bool = false) {
         titleLabel.text = article?.title
         authorLabel.text = article?.author
         dateLabel.text = publishedDate
         self.isAddedToFavorite = isAddedToFavorite
-        self.addToFavorite = addToFavorite
         
         guard let imageUrl = article?.imageUrl else { return }
         imageView.sd_setImage(with: URL(string: imageUrl), completed: .none)
         favoriteButton.setImage(Asset.Images.favorite.image.withColor( isAddedToFavorite ? Asset.Colors.redish.color : .white), for: .normal)
     }
-    
-    @IBAction func onFavoriteButtonTapped(_ sender: Any) {
-        addToFavorite?()
-    }
-    
 }
