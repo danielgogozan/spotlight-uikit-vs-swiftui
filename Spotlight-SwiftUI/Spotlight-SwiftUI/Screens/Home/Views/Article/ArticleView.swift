@@ -28,8 +28,9 @@ struct ArticleView: View {
                     Image(uiImage: Asset.Images.breakingNews.image)
                 }
                 .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
                 .frame(height: 150)
-                .aspectRatio(contentMode: .fit)
                 .cornerRadius(8)
                 .overlay(alignment: .leading) {
                     ZStack(alignment: .leading) {
@@ -57,7 +58,6 @@ struct ArticleView: View {
                     }
                 }
                 .foregroundColor(.white)
-            Spacer()
         }
     }
 }

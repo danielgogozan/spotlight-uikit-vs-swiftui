@@ -28,6 +28,8 @@ struct LatestView: View {
                     Image(uiImage: Asset.Images.breakingNews.image)
                 }
                 .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
                 .frame(height: 128)
                 .cornerRadius(8)
             

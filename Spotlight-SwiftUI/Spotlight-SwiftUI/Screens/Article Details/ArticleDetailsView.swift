@@ -30,6 +30,8 @@ struct ArticleDetailsView: View {
                                     Image(uiImage: Asset.Images.breakingNews.image)
                                 }
                                 .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .clipped()
                                 .frame(height: geometry.size.height / 2)
                             
                             VStack(alignment: .leading) {

@@ -18,10 +18,10 @@ final class Constants {
 //    static let apiKey = "f9de2c2040254a83a883385c2a75a3f9"
     
     // the paner22 key
-    static let apiKey = "b371c827660748ac926d98bb06d03dea"
+//    static let apiKey = "b371c827660748ac926d98bb06d03dea"
     
     // personal key
-   // static let apiKey = "f004ac93811648b3abad2e3864c1a7de"
+    static let apiKey = "f004ac93811648b3abad2e3864c1a7de"
     
     // MARK: - Keychain
     static let kTokenService = "ro.spotlight"
