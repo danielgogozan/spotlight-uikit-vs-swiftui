@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension APIServiceProtocol where Self == APIService {
     static var preview: APIServiceProtocol {
         APIService()

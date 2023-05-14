@@ -39,16 +39,19 @@ struct FloatingTabBar: View {
     @StateObject var tabSettings = TabSettings()
     @State private var offset: CGSize = .zero
     private var cancellables = [AnyCancellable]()
-    private let articleViewModel: ArticleViewModel = ArticleViewModel.preview
+    private let articlesViewModel: ArticleViewModel
+    private let headlinesViewModel: HeadlineViewModel
     
-    init() {
+    init(articlesViewModel: ArticleViewModel, headlinesViewModel: HeadlineViewModel) {
+        self.articlesViewModel = articlesViewModel
+        self.headlinesViewModel = headlinesViewModel
         UITabBar.appearance().isHidden = true
     }
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             TabView(selection: $selectedTab) {
-                HomeView(articleViewModel: articleViewModel)
+                HomeView(articlesViewModel: articlesViewModel, headlineViewModel: headlinesViewModel)
                     .ignoresSafeArea(.all, edges: .bottom)
                     .tag(TabItem.home)
                 FavoriteView()
@@ -105,6 +108,6 @@ struct FloatingTabBar: View {
 
 struct FloatinTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingTabBar()
+        FloatingTabBar(articlesViewModel: .preview, headlinesViewModel: .preview)
     }
 }

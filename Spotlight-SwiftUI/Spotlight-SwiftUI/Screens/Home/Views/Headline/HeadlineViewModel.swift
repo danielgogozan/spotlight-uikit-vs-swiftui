@@ -16,6 +16,12 @@ class HeadlineViewModel: StatefulViewModel<[Article], Error> {
         self.apiService = apiService
     }
     
+    
+    var latestNewsViewModel: LatestNewsViewModel {
+        LatestNewsViewModel(apiService: apiService,
+                            articles: state.payload ?? [])
+    }
+    
     func getTopHeadlines() {
         guard state.payload?.isEmpty ?? true else { return }
         let headlinesFilter = HeadlinesFilter()

@@ -69,7 +69,7 @@ struct SearchHistoryView: View {
     }
     
     var searchResultsView: SearchResultsView {
-        let searchResultViewModel = SearchResultsViewModel(apiService: NewsService.preview,
+        let searchResultViewModel = SearchResultsViewModel(apiService: DependencyContainer.shared.newsApiService,
                                                            filterData: .init(query: query, selectedCategory: .filter))
         return SearchResultsView(viewModel: searchResultViewModel)
     }

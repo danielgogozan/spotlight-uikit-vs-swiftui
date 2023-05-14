@@ -11,10 +11,10 @@ import Combine
 class ArticleViewModel: StatefulViewModel<[Article], Error> {
     typealias State = ViewState<[Article], Error>
     private let apiService: NewsServiceProtocol
-    private var currentPage = 0
+    private var currentPage = 1
     private var cancellables = [AnyCancellable]()
     
-    @Published var selectedTags: [String] = NewsCategory.homeCases.filter { $0.rawValue == NewsCategory.science.rawValue }.map { $0.rawValue }
+    @Published var selectedTags: [String] = NewsCategory.homeCases.filter { $0.rawValue == NewsCategory.general.rawValue }.map { $0.rawValue }
     @Published var showLoadingView: Bool = false
     
     var selectedCategories: [NewsCategory] = []
@@ -47,7 +47,7 @@ class ArticleViewModel: StatefulViewModel<[Article], Error> {
                 guard let self, !newTags.allSatisfy({ tag in self.selectedTags.contains(tag) })
                 else { return }
                 self.selectedCategories = newTags.compactMap { NewsCategory(rawValue: $0) }
-                self.currentPage = 0
+                self.currentPage = 1
                 self.getArticles(force: true)
             }
             .store(in: &cancellables)

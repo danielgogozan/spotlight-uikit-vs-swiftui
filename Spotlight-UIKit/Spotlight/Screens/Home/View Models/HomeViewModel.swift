@@ -18,7 +18,7 @@ class HomeViewModel {
     
     // MARK: - Private properties
     private let newsApiService: NewsServiceProtocol
-    private var currentPage = 0
+    private var currentPage = 1
     
     // MARK: - Public properties
     let topHeadlines = Observable<[ArticleViewModel]>([])
@@ -67,7 +67,7 @@ class HomeViewModel {
     }
     
     func resetData() {
-        currentPage = 0
+        currentPage = 1
         news.value = []
         stopInfiniteScroll.value = false
     }

@@ -3,4 +3,54 @@
    uuid = "86137958-D6AA-4592-8847-DA6E456C3BD0"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E53728EB-44D0-445B-B1F7-35DD50AE7FF7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotlight-SwiftUI/Core/StatefulViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "==(lhs:rhs:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E53728EB-44D0-445B-B1F7-35DD50AE7FF7 - eaea875ea7b62d2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Spotlight_SwiftUI.ViewState&lt; where &#x3c4;_0_0: Swift.Equatable&gt;.== infix(Spotlight_SwiftUI.ViewState&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;, Spotlight_SwiftUI.ViewState&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;) -&gt; Swift.Bool"
+                  moduleName = "Spotlight-SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgogozan/Desktop/master-app/spotlight-uikit-vs-swiftui/Spotlight-SwiftUI/Spotlight-SwiftUI/Core/StatefulViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "1060">
+               </Location>
+               <Location
+                  uuid = "E53728EB-44D0-445B-B1F7-35DD50AE7FF7 - eaea875ea7b62d2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Spotlight_SwiftUI.ViewState&lt; where &#x3c4;_0_0: Swift.Equatable&gt;.== infix(Spotlight_SwiftUI.ViewState&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;, Spotlight_SwiftUI.ViewState&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;) -&gt; Swift.Bool"
+                  moduleName = "Spotlight-SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgogozan/Desktop/master-app/spotlight-uikit-vs-swiftui/Spotlight-SwiftUI/Spotlight-SwiftUI/Core/StatefulViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "1400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

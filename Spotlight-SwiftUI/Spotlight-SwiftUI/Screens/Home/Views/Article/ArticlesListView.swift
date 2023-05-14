@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ArticlesView: View {
+struct ArticlesListView: View {
     @State private var isPresentingLatest = false
-    @State private var headlineViewModel = HeadlineViewModel(apiService: NewsService.preview)
-    @ObservedObject var viewModel: ArticleViewModel
+    @ObservedObject var articlesViewModel: ArticleViewModel
+    let headlinesViewModel: HeadlineViewModel
     
     var availableSize: CGSize
     @State var selection: Int?
@@ -20,32 +20,32 @@ struct ArticlesView: View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
                 header
-                HeadlinesView(viewModel: headlineViewModel,
+                HeadlinesView(viewModel: headlinesViewModel,
                               availableSize: availableSize)
                 
-                PillFilterView(selected: $viewModel.selectedTags,
+                PillFilterView(selected: $articlesViewModel.selectedTags,
                                filterItems: NewsCategory.homeCases.map { $0.rawValue },
                                multipleSelection: true)
-                StatefulView(contentView: contentView, viewModel: viewModel)
+                StatefulView(contentView: contentView, viewModel: articlesViewModel)
             }
         }
     }
     
     var contentView: some View {
         LazyVStack {
-            ForEach(viewModel.state.payload ?? [], id: \.id) { article in
+            ForEach(articlesViewModel.state.payload ?? [], id: \.id) { article in
                 NavigationLink {
                     ArticleDetailsView(article: article)
                 } label: {
                     ArticleView(article: article)
                         .onAppear {
-                            viewModel.getMore(article)
+                            articlesViewModel.getMore(article)
                         }
                 }
             }
             .padding([.leading, .trailing], 10)
             
-            if viewModel.showLoadingView {
+            if articlesViewModel.showLoadingView {
                 ProgressView()
                     .tint(Asset.Colors.redish.color.swiftUI)
             }
@@ -73,8 +73,7 @@ struct ArticlesView: View {
             }
             .navigationTitle("")
             .navigationDestination(isPresented: $isPresentingLatest) {
-                LatestNewsView(viewModel: LatestNewsViewModel(apiService: NewsService.preview,
-                                                              articles: headlineViewModel.state.payload ?? []))
+                LatestNewsView(viewModel: headlinesViewModel.latestNewsViewModel)
             }
         }
         .padding([.top], 30)
@@ -84,7 +83,8 @@ struct ArticlesView: View {
 
 struct ArticlesView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticlesView(viewModel: .preview,
+        ArticlesListView(articlesViewModel: .preview,
+                     headlinesViewModel: .preview,
                      availableSize: CGSize(width: 600, height: 128))
     }
 }

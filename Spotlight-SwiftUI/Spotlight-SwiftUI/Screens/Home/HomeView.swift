@@ -10,7 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @State private var isPresentingSearch: Bool = false
     
-    var articleViewModel: ArticleViewModel
+    let articlesViewModel: ArticleViewModel
+    let headlineViewModel: HeadlineViewModel
     @EnvironmentObject var tabSettings: TabSettings
     
     var body: some View {
@@ -18,7 +19,8 @@ struct HomeView: View {
             ZStack {
                 GeometryReader { geometry in
                     VStack(alignment: .leading) {
-                        ArticlesView(viewModel: articleViewModel,
+                        ArticlesListView(articlesViewModel: articlesViewModel,
+                                         headlinesViewModel: headlineViewModel,
                                      availableSize: geometry.size)
                         Spacer()
                     }
@@ -61,6 +63,6 @@ struct HomeView: View {
     
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(articleViewModel: ArticleViewModel.preview)
+        HomeView(articlesViewModel: .preview, headlineViewModel: .preview)
     }
 }

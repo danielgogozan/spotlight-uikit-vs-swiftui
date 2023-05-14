@@ -11,11 +11,13 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("didRunBefore") private var didRunBefore = false
+    let dependencyContainer: DependencyContainer
     
     var body: some View {
         ZStack {
             if didRunBefore {
-                FloatingTabBar()
+                FloatingTabBar(articlesViewModel: dependencyContainer.articlesViewModel,
+                               headlinesViewModel: dependencyContainer.headlinesViewModel)
             } else {
                 LoginView(viewModel: LoginViewModel(apiService: AuthService(apiService: APIService()),
                                                     keychainManager: KeychainManager(keychain: Keychain())))
@@ -24,8 +26,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(dependencyContainer: DependencyContainer.shared)
+//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}
